@@ -1,5 +1,12 @@
 {
-  "dependencies": {
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Atip's portfolio website",
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i css/index.css -o css/style.css",
+    "watch": "npx @tailwindcss/cli -i css/index.css -o css/style.css --watch"
+  },
+  "devDependencies": {
     "@tailwindcss/cli": "^4.1.13",
     "tailwindcss": "^4.1.13"
   }
