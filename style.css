@@ -1,0 +1,136 @@
+:root {
+  --bg: whitesmoke;
+  --text: #1f1f1f;
+  --bgd: #1f1f1f;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bgd);
+  color: #fff;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body.light-mode {
+  background-color: var(--bg);
+  color: #000;
+}
+
+body.light-mode #sun {
+  display: block;
+  color: var(--text);
+}
+
+body.light-mode .project-card {
+  border-color: var(--bg);
+}
+
+body.light-mode #moon {
+  display: none;
+}
+
+#sun {
+  display: none;
+}
+
+#sun,
+#moon {
+  transition: fill 0.3s ease;
+}
+
+.theme-btn,
+.email-link {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email-link {
+  text-decoration: none;
+}
+
+/* hero section */
+.hero {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 5em;
+  margin: 0;
+}
+
+.hero-content p {
+  font-size: 2em;
+}
+
+.icon-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* projects */
+.projects {
+  margin-bottom: 1rem;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2em;
+}
+
+.project-list {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card {
+  max-width: 400px;
+  border: 2px solid #fff;
+  padding: 1.25rem;
+  transition: border-color 0.3s ease;
+}
+
+body.light-mode .project-card {
+  border-color: #000;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.project-img {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  align-self: center;
+  text-align: center;
+  border: 1px solid var(--bg);
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+}

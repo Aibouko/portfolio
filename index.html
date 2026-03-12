@@ -2,126 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Aibouko - Game and Website Developer Portfolio"
-    />
-    <meta name="author" content="Aibouko" />
-
-    <meta property="og:title" content="Aibouko | Developer" />
-    <meta property="og:description" content="I build games and websites" />
-    <meta property="og:type" content="website" />
-
-    <title>Aibouko | Game & Web Developer</title>
-
-    <link rel="stylesheet" href="css/style.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-    />
-    <style>
-      .material-symbols-outlined {
-        font-family: "Material Symbols Outlined";
-        font-weight: normal;
-        font-style: normal;
-        font-size: 36px; /* icon size */
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        white-space: nowrap;
-        direction: ltr;
-      }
-    </style>
-    <script>
-      (function () {
-        const saved = localStorage.getItem("theme");
-        const system = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        document.documentElement.setAttribute(
-          "data-theme",
-          saved || (system ? "dark" : "light"),
-        );
-      })();
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aibouko</title>
+    <link href="style.css" rel="stylesheet" />
   </head>
-
   <body>
-    <!-- Background -->
-    <div class="bg-grid" aria-hidden="true"></div>
-
-    <!-- Hero -->
-    <header class="hero">
-      <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-        <svg
-          id="sun-icon"
-          class="icon hidden"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="12" cy="12" r="5" />
-          <path
-            d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-          />
-        </svg>
-        <svg
-          id="moon-icon"
-          class="icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      </button>
-
-      <h1>Aibouko</h1>
-      <p>I build <strong>games</strong> and <strong>websites</strong></p>
-      <a href="mailto:pitava@proton.me">
-        <span class="material-symbols-outlined">mail</span>
-      </a>
-    </header>
-
-    <!-- Projects -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Aibouko</h1>
+        <p>I make <strong>games</strong> and <strong>websites</strong></p>
+        <div class="icon-row">
+          <button id="themeBtn" class="theme-btn">
+            <svg
+              id="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="currentColor"
+            >
+              <path
+                d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Zm283-57q47-47 47-113t-47-113q-47-47-113-47t-113 47q-47 47-47 113t47 113q47 47 113 47t113-47ZM480-480Z"
+              />
+            </svg>
+            <svg
+              id="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="currentColor"
+            >
+              <path
+                d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Zm0-80q88 0 163-44t118-121q-86-8-163-43.5T463-465q-61-61-97-138t-43-163q-77 43-120.5 118.5T159-484q0 135 94.5 229.5T483-160Zm-20-305Z"
+              />
+            </svg>
+          </button>
+          <a href="mailto:atipvietnghiem@gmail.com" class="email-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="currentColor"
+            >
+              <path
+                d="M146.67-160q-27 0-46.84-19.83Q80-199.67 80-226.67v-506.66q0-27 19.83-46.84Q119.67-800 146.67-800h666.66q27 0 46.84 19.83Q880-760.33 880-733.33v506.66q0 27-19.83 46.84Q840.33-160 813.33-160H146.67ZM480-454.67 146.67-670v443.33h666.66V-670L480-454.67Zm0-66.66 330.67-212H150l330 212ZM146.67-670v-63.33V-226.67-670Z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
     <section class="projects">
       <h2>Projects</h2>
-
-      <div class="grid">
-        <article class="card">
-          <a href="https://github.com/Aibouko/Gesture-Drawing-App">
-            <div class="card-image">
-              <img
-                src="./assets/gesturedrawing.png"
-                alt="Gesture Drawing App"
-              />
-            </div>
-
-            <h3>Gesture Drawing App</h3>
-
-            <div class="tags muted">
-              <span>Windows</span>
-              <span>•</span>
-              <span>Linux</span>
-            </div>
-
-            <div class="tags">
-              <span>Godot</span>
-              <span>•</span>
-              <span>GDScript</span>
-            </div>
-
-            <a href="https://github.com/Aibouko/Gesture-Drawing-App">GitHub</a>
-          </a>
+      <div class="project-list">
+        <article class="project-card">
+          <div class="project-img">
+            <img
+              src="assets/gesturedrawing.png"
+              alt="gesturedrawing thumnail"
+            />
+          </div>
+          <h3>Gesture Drawing App</h3>
+          <div class="tags">
+            <span>Godot</span>
+            <span>•</span>
+            <span>GDscript</span>
+          </div>
         </article>
       </div>
     </section>
-
-    <script src="js/main.js"></script>
+    <footer></footer>
+    <script src="theme.js"></script>
   </body>
 </html>
