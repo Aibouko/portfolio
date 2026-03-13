@@ -14,8 +14,8 @@ Guidelines for agentic coding agents working on this codebase.
 ### Running the Project
 
 ```bash
-# Open in default browser (macOS)
-open index.html
+# Open in default browser (Linux)
+xdg-open index.html
 
 # Or use a simple HTTP server
 python3 -m http.server 8000
@@ -79,6 +79,7 @@ No automated tests. Test by opening `index.html` in a browser.
 - Add `:focus-visible` styles for keyboard navigation
 - Support light/dark themes with CSS variables
 - Use mobile-first responsive design
+- 2-space indentation
 
 ```css
 :root {
@@ -140,8 +141,10 @@ themeBtn.addEventListener("click", () => {
 - Proper heading hierarchy (h1 -> h2 -> h3)
 - `aria-label` on icon-only buttons
 - `aria-pressed` for toggle buttons
+- `aria-hidden` on decorative SVGs
 - `alt` text for all images
 - Keyboard navigation with focus states
+- Focus visible outlines
 
 ## Importing Resources
 
@@ -164,12 +167,27 @@ portfolio/
 └── .gitignore
 ```
 
+## Current Features
+
+- Light/dark theme toggle with localStorage persistence
+- Project cards with hover animations
+- Responsive design
+- Email link with SVG icon
+- Footer with copyright
+
 ## Common Tasks
 
 ### Adding a Project
+
 1. Add project card HTML in the projects section
 2. Add image to `assets/` folder
 3. Update CSS if needed
+
+### Adding a New Section
+
+1. Add `<section>` with `aria-labelledby` attribute
+2. Add corresponding heading with unique id
+3. Style in `style.css`
 
 ## Notes for Agents
 
