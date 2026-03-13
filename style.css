@@ -1,30 +1,35 @@
 :root {
-  --bg: whitesmoke;
-  --text: #1f1f1f;
-  --bgd: #1f1f1f;
+  /* Light theme colors */
+  --bg-light: whitesmoke;
+  --text-dark: #1f1f1f;
+
+  /* Dark theme colors */
+  --bg-dark: #1f1f1f;
+  --text-light: #ffffff;
+
+  /* Accent colors */
+  --focus-color: #4a90e2;
+  --focus-outline: 3px solid var(--focus-color);
 }
 
 body {
   margin: 0;
-  background-color: var(--bgd);
-  color: #fff;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
+/* Light mode theme */
 body.light-mode {
-  background-color: var(--bg);
-  color: #000;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 body.light-mode #sun {
   display: block;
-  color: var(--text);
-}
-
-body.light-mode .project-card {
-  border-color: var(--bg);
+  color: var(--text-dark);
 }
 
 body.light-mode #moon {
@@ -50,10 +55,28 @@ body.light-mode #moon {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .email-link {
   text-decoration: none;
+}
+
+.theme-btn:focus-visible,
+.email-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.theme-btn:hover,
+.email-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .theme-btn:hover,
+body.light-mode .email-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* hero section */
@@ -108,18 +131,27 @@ body.light-mode #moon {
 
 .project-card {
   max-width: 400px;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-light);
   padding: 1.25rem;
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 body.light-mode .project-card {
-  border-color: #000;
+  border-color: var(--text-dark);
 }
 
+/* Hover effect */
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:focus-within {
+  outline: var(--focus-outline);
+  outline-offset: 4px;
 }
 
 .project-img {
@@ -127,10 +159,34 @@ body.light-mode .project-card {
   overflow: hidden;
   align-self: center;
   text-align: center;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--bg-light);
+  border-radius: 4px;
 }
 
 .project-img img {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.9em;
+}
+
+.tag-separator {
+  opacity: 0.5;
+}
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9em;
+  opacity: 0.7;
 }
