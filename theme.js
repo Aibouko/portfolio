@@ -1,17 +1,25 @@
-const themeBtn = document.getElementById("themeBtn");
+(function initTheme() {
+  const themeBtn = document.getElementById("themeBtn");
+  if (!themeBtn) return;
 
-const savedTheme = localStorage.getItem("theme");
-const isLightMode = savedTheme === "light";
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+      themeBtn.setAttribute("aria-pressed", "true");
+    }
+  } catch (e) {
+    console.warn("localStorage unavailable:", e);
+  }
 
-if (isLightMode) {
-  document.body.classList.add("light-mode");
-  themeBtn.setAttribute("aria-pressed", "true");
-}
+  themeBtn.addEventListener("click", () => {
+    const isLight = document.body.classList.toggle("light-mode");
+    themeBtn.setAttribute("aria-pressed", isLight ? "true" : "false");
 
-themeBtn.addEventListener("click", () => {
-  const isLight = document.body.classList.toggle("light-mode");
-
-  themeBtn.setAttribute("aria-pressed", isLight ? "true" : "false");
-
-  localStorage.setItem("theme", isLight ? "light" : "dark");
-});
+    try {
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    } catch (e) {
+      console.warn("Could not save theme preference:", e);
+    }
+  });
+})();
