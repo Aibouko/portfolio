@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Why I Keep My Neovim Config in One File - Aibouko's development notes" />
+    <title>Why I Keep My Neovim Config in One File | Aibouko</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
+    <style>
+      .blog-article {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      .blog-header-full {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid var(--gutter-color);
+      }
+      
+      .blog-header-full h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .blog-header-full .jp-text {
+        display: block;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+      
+      .blog-meta-full {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+      
+      .blog-category {
+        background: var(--accent-lavender);
+        color: white;
+        padding: 0.2rem 0.8rem;
+        border-radius: 3px;
+      }
+      
+      .blog-content-full {
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+      
+      .blog-content-full p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .blog-content-full h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+      
+      .blog-content-full h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.4rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-secondary);
+      }
+      
+      .blog-content-full ul {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+      }
+      
+      .blog-content-full li {
+        margin-bottom: 0.5rem;
+      }
+      
+      .blog-quote-full {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(184, 169, 201, 0.1);
+        border-left: 4px solid var(--accent-lavender);
+        font-style: italic;
+      }
+      
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.2s ease;
+      }
+      
+      .back-link:hover {
+        color: var(--accent-lavender);
+      }
+      
+      @media (max-width: 600px) {
+        .blog-article {
+          padding: 1rem;
+        }
+        
+        .blog-header-full h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="manga-page">
+      <section class="blog-section manga-chapter">
+        <div class="chapter-header">
+          <span class="chapter-number">BLOG</span>
+          <span class="chapter-title">Development Notes</span>
+        </div>
+        
+        <div class="manga-panel blog-panel">
+          <a href="../blog.html" class="back-link">← Back to Blog</a>
+          
+          <article class="blog-article">
+            <header class="blog-header-full">
+              <h1>【Why I Keep My Neovim Config in One File】</h1>
+              <span class="jp-text" aria-hidden="true">単一ファイルの設定</span>
+              
+              <div class="blog-meta-full">
+                <span class="blog-date">March 30, 2026</span>
+                <span class="blog-category">Dev Tools</span>
+              </div>
+            </header>
+            
+            <p class="blog-quote-full">「Simplicity is the ultimate sophistication」</p>
+            
+            <div class="blog-content-full">
+              <p>I've been using Neovim for a while now, and one question I keep getting is: "Why do you keep everything in a single init.lua instead of splitting it into multiple files?" Today I'll explain my philosophy, the plugins that power my workflow, and why Neovim has become my editor of choice.</p>
+              
+              <h2>1. Why One File? The Beauty of init.lua</h2>
+              
+              <p>Most Neovim users eventually split their config into a modular structure: <code>plugins.lua</code>, <code>keymaps.lua</code>, <code>settings.lua</code>, and so on. It's the recommended approach. So why do I resist?</p>
+              
+              <p><strong>It's all about cognitive load.</strong> When I open my config, I want to see everything at once. No jumping between files, no remembering where I put that specific keymap, no mental context switching. Just one scrollable document where I can find anything in seconds.</p>
+              
+              <p>Here's how I organize my single file:</p>
+              
+              <pre><code><span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- NEOVIM CONFIG - Everything in one place</span>
+<span class="code-comment">-- ==========================================</span>
+
+<span class="code-comment">-- SECTION 1: Options & Settings</span>
+<span class="code-keyword">local</span> <span class="code-function">opt</span> = vim.opt
+opt.number = <span class="code-keyword">true</span>
+opt.relativenumber = <span class="code-keyword">true</span>
+opt.tabstop = <span class="code-number">2</span>
+opt.shiftwidth = <span class="code-number">2</span>
+
+<span class="code-comment">-- SECTION 2: Keymaps</span>
+<span class="code-keyword">local</span> <span class="code-function">map</span> = vim.keymap.set
+map(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;ff'</span>, <span class="code-string">':Telescope find_files&lt;CR&gt;'</span>)
+
+<span class="code-comment">-- SECTION 3: Plugin Setup</span>
+<span class="code-comment">-- (Using lazy.nvim for plugin management)</span></code></pre>
+              
+              <p>With clear section comments and consistent organization, my ~300 line init.lua is actually <em>easier</em> to navigate than a scattered modular setup. When something breaks, I know exactly where to look.</p>
+              
+              <h2>2. My Essential Plugins</h2>
+              
+              <p>I don't use many plugins. I believe in a minimal setup that gets out of my way. Here are the ones I actually need:</p>
+              
+              <h3>File Finding & Navigation</h3>
+              
+              <p><strong>Telescope</strong> is my window into the project. Fuzzy finding files, grepping code, searching buffers - it's all there.</p>
+              
+              <pre><code><span class="code-comment">-- Telescope for fuzzy finding</span>
+{
+  <span class="code-string">'nvim-telescope/telescope.nvim'</span>,
+  dependencies = { <span class="code-string">'nvim-lua/plenary.nvim'</span> },
+  config = <span class="code-keyword">function</span>()
+    <span class="code-keyword">local</span> <span class="code-function">builtin</span> = <span class="code-function">require</span>(<span class="code-string">'telescope.builtin'</span>)
+    vim.keymap.set(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;ff'</span>, builtin.find_files, {})
+    vim.keymap.set(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;fg'</span>, builtin.live_grep, {})
+  <span class="code-keyword">end</span>
+}</code></pre>
+              
+              <h3>Language Support</h3>
+              
+              <p><strong>nvim-treesitter</strong> for better syntax highlighting and code understanding. It makes every language feel premium.</p>
+              
+              <p><strong>nvim-lspconfig</strong> for Language Server Protocol support. Go to definition, hover documentation, diagnostics - the IDE experience without the IDE bloat.</p>
+              
+              <h3>The Aesthetic Touch</h3>
+              
+              <p><strong>Catppuccin</strong> theme. I use the mocha variant - warm, easy on the eyes, perfect for long coding sessions. It matters more than you'd think.</p>
+              
+              <pre><code><span class="code-comment">-- Catppuccin theme setup</span>
+{
+  <span class="code-string">"catppuccin/nvim"</span>,
+  name = <span class="code-string">"catppuccin"</span>,
+  priority = <span class="code-number">1000</span>,
+  config = <span class="code-keyword">function</span>()
+    <span class="code-function">require</span>(<span class="code-string">"catppuccin"</span>).setup({
+      flavour = <span class="code-string">"mocha"</span>,
+    })
+    vim.cmd.colorscheme <span class="code-string">"catppuccin"</span>
+  <span class="code-keyword">end</span>
+}</code></pre>
+              
+              <h3>Status Line</h3>
+              
+              <p><strong>lualine.nvim</strong> - Clean, minimal, shows exactly what I need: mode, filename, git branch, line numbers. No fluff.</p>
+              
+              <h2>3. Why Neovim?</h2>
+              
+              <p>After using VS Code, Sublime Text, and various JetBrains products, why did I settle on Neovim?</p>
+              
+              <p><strong>It's fast.</strong> No Electron bloat, no startup delays. It opens instantly, even on large projects.</p>
+              
+              <p><strong>It's consistent.</strong> The same editor on my laptop, on a remote server, in a Docker container. I SSH somewhere and my familiar environment is there.</p>
+              
+              <p><strong>It's mine.</strong> Every keymap, every behavior, every visual choice is intentional. I understand every line of my config because I wrote it. When something breaks, I know exactly why.</p>
+              
+              <p><strong>It stays out of my way.</strong> No popups, no "helpful" suggestions interrupting flow, no AI autocomplete getting cocky. Just me and the text.</p>
+              
+              <h2>The Verdict</h2>
+              
+              <p>One file. Essential plugins. Total control. That's my Neovim setup, and I wouldn't have it any other way.</p>
+              
+              <p>Is it for everyone? No. But if you value simplicity, speed, and understanding your tools at a fundamental level, consider giving the single-file approach a try. You might be surprised how liberating it is.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="manga-footer">
+      <div class="footer-content">
+        <span class="end-mark">― おわり ―</span>
+        <p class="copyright">&copy; 2026 Aibouko</p>
+      </div>
+    </footer>
+  </body>
+</html>
