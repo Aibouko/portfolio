@@ -940,6 +940,41 @@ h1#site-title {
   }
 }
 
+/* Blog Code Blocks - Dark Theme */
+.blog-content-full code {
+  background: rgba(184, 169, 201, 0.15);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--text-primary);
+}
+
+.blog-content-full pre {
+  background: #2d3436;
+  color: #dfe6e9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 2px solid var(--accent-lavender);
+}
+
+.blog-content-full pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #dfe6e9;
+}
+
+/* Syntax Highlighting */
+.code-keyword { color: #ff7675; }     /* red - function, const, return */
+.code-string { color: #74b9ff; }      /* blue - "strings" */
+.code-comment { color: #636e72; }     /* gray - // comments */
+.code-function { color: #55efc4; }    /* green - function names */
+.code-number { color: #fdcb6e; }       /* yellow - numbers */
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -7,6 +7,14 @@
   2. Rename it (e.g., blog-post-03.html)
   3. Update the content below
   4. Add a link to it in blog.html
+  
+  CODE BLOCKS: Use <pre><code>...</code></pre> for code
+  SYNTAX HIGHLIGHTING: Wrap code elements in span classes:
+    .code-keyword (red) - function, const, let, return, if, for
+    .code-string (blue) - "strings"
+    .code-comment (gray) - // comments
+    .code-function (green) - function names
+    .code-number (yellow) - numbers
 -->
 <html lang="en">
   <head>
@@ -134,7 +142,21 @@
             <div class="blog-content-full">
               <p>Your first paragraph goes here...</p>
               
-              <p>Your second paragraph...</p>
+              <p>You can write about your code with <code>inline code</code> for function names.</p>
+              
+              <!-- CODE BLOCK EXAMPLE: Copy and modify for your code -->
+              <pre><code><span class="code-comment">// Create a bullet pattern</span>
+<span class="code-keyword">function</span> <span class="code-function">createSpiral</span>(centerX, centerY) {
+  <span class="code-keyword">const</span> bullets = [];
+  <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = <span class="code-number">0</span>; i < <span class="code-number">360</span>; i += <span class="code-number">15</span>) {
+    <span class="code-keyword">const</span> angle = i * <span class="code-number">0.0174533</span>;
+    <span class="code-keyword">const</span> bullet = <span class="code-keyword">new</span> Bullet();
+    bullet.position.<span class="code-function">set</span>(centerX, centerY);
+    bullet.velocity.<span class="code-function">set</span>(<span class="code-function">Math.cos</span>(angle) * <span class="code-number">5</span>, <span class="code-function">Math.sin</span>(angle) * <span class="code-number">5</span>);
+    bullets.<span class="code-function">push</span>(bullet);
+  }
+  <span class="code-keyword">return</span> bullets;
+}</code></pre>
               
               <p>More content...</p>
             </div>
