@@ -5,138 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Aibouko - Developer creating games and websites. View my portfolio of Godot projects and web development work."
+      content="Aibouko - Game & web developer. View portfolio of Godot projects and web development work."
     />
     <title>Aibouko</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" />
-    <script src="theme.js" defer></script>
   </head>
   <body>
-    <main>
+    <main class="manga-page">
       <!-- Hero Section -->
-      <section class="hero" aria-labelledby="site-title">
-        <div class="hero-content">
-          <h1 id="site-title">Aibouko</h1>
-          <p>I make <strong>games</strong> and <strong>websites</strong></p>
-          <div class="icon-row">
-            <button
-              id="themeBtn"
-              class="theme-btn"
-              aria-label="Toggle light/dark theme"
-              aria-pressed="false"
-              type="button"
-            >
-              <svg
-                id="sun"
-                xmlns="http://www.w3.org/2000/svg"
-                height="32px"
-                viewBox="0 -960 960 960"
-                width="32px"
-                fill="currentColor"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Zm283-57q47-47 47-113t-47-113q-47-47-113-47t-113 47q-47 47-47 113t47 113q47 47 113 47t113-47ZM480-480Z"
-                />
-              </svg>
-              <svg
-                id="moon"
-                xmlns="http://www.w3.org/2000/svg"
-                height="32px"
-                viewBox="0 -960 960 960"
-                width="32px"
-                fill="currentColor"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Zm0-80q88 0 163-44t118-121q-86-8-163-43.5T463-465q-61-61-97-138t-43-163q-77 43-120.5 118.5T159-484q0 135 94.5 229.5T483-160Zm-20-305Z"
-                />
-              </svg>
-            </button>
-
-            <a
-              href="mailto:atipvietnghiem@gmail.com"
-              class="email-link"
-              aria-label="Send email to Aibouko"
-              title="Send email"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="32px"
-                viewBox="0 -960 960 960"
-                width="32px"
-                fill="currentColor"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M146.67-160q-27 0-46.84-19.83Q80-199.67 80-226.67v-506.66q0-27 19.83-46.84Q119.67-800 146.67-800h666.66q27 0 46.84 19.83Q880-760.33 880-733.33v506.66q0 27-19.83 46.84Q840.33-160 813.33-160H146.67ZM480-454.67 146.67-670v443.33h666.66V-670L480-454.67Zm0-66.66 330.67-212H150l330 212ZM146.67-670v-63.33V-226.67-670Z"
-                />
-              </svg>
-            </a>
+      <section class="hero manga-chapter" aria-labelledby="site-title">
+        <div class="chapter-header">
+          <span class="chapter-number">CH. 00</span>
+          <span class="chapter-title">Character Profile</span>
+        </div>
+        
+        <div class="hero-panels">
+          <!-- Profile Panel -->
+          <div class="manga-panel panel-profile">
+            <div class="panel-header">
+              <span class="panel-label">Profile</span>
+            </div>
+            <div class="panel-content">
+              <div class="profile-card">
+                <div class="profile-name">
+                  <h1 id="site-title"></h1>
+                  <span class="jp-text" aria-hidden="true"></span>
+                </div>
+                <p class="tagline"></p>
+                
+                <div class="profile-stats">
+                  <!-- Populated by JavaScript -->
+                </div>
+                
+                <div class="action-buttons">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="choice-btn" aria-label="View GitHub profile">
+                    <span class="btn-text">GitHub</span>
+                  </a>
+                  <a href="#" class="choice-btn" aria-label="Send email">
+                    <span class="btn-text">Email</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Skills Panel -->
+          <div class="manga-panel panel-skills">
+            <div class="panel-header">
+              <span class="panel-label">Skill Tree</span>
+            </div>
+            <div class="panel-content">
+              <div class="skill-tree">
+                <div class="tree-center">
+                  <span class="center-node"></span>
+                </div>
+                <div class="tree-branches-horizontal">
+                  <div class="branch-left">
+                    <div class="branch-connector left-connector"></div>
+                    <div class="branch-node">
+                      <span class="branch-title">Game</span>
+                      <div class="skills-group"></div>
+                    </div>
+                  </div>
+                  <div class="branch-right">
+                    <div class="branch-connector right-connector"></div>
+                    <div class="branch-node">
+                      <span class="branch-title">Web</span>
+                      <div class="skills-group"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tree-branches-vertical">
+                  <div class="branch-down">
+                    <div class="branch-connector down-connector"></div>
+                    <div class="branch-node">
+                      <span class="branch-title">Tools</span>
+                      <div class="skills-group"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        <button class="continue-btn" onclick="scrollToProjects()" aria-label="Continue to projects">
+          <span class="continue-text-en">▼ Continue</span>
+          <span class="continue-text-jp" aria-hidden="true">▼ 続く</span>
+        </button>
       </section>
 
+      <div class="page-break" aria-hidden="true"></div>
+
       <!-- Projects Section -->
-      <section class="projects" aria-labelledby="projects-heading">
-        <h2 id="projects-heading">Projects</h2>
-        <div class="project-list">
-          <a
-            href="https://github.com/Aibouko/Gesture-Drawing-App"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View Gesture Drawing App on GitHub"
-            class="project-card-link"
-          >
-            <article class="project-card">
-              <div class="project-img">
-                <img
-                  src="assets/gesturedrawing.png"
-                  alt="Gesture Drawing App interface showing a drawing canvas with practice tools"
-                  loading="lazy"
-                />
-              </div>
-              <h3>Gesture Drawing App</h3>
-              <div class="tags">
-                <span class="tag">Godot</span>
-                <span class="tag-separator" aria-hidden="true">•</span>
-                <span class="tag">GDScript</span>
-              </div>
-            </article>
-          </a>
-          <a
-            href="https://github.com/Aibouko/Bullet-Hell"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View Bullet Hell on GitHub"
-            class="project-card-link"
-          >
-            <article class="project-card">
-              <div class="project-img">
-                <img
-                  src="assets/bullethell.jpg"
-                  alt="Bullet hell ingame"
-                  loading="lazy"
-                />
-              </div>
-              <h3>Bullet Hell</h3>
-              <div class="tags">
-                <span class="tag">Godot</span>
-                <span class="tag-separator" aria-hidden="true">•</span>
-                <span class="tag">GDScript</span>
-              </div>
-            </article>
-          </a>
+      <section id="projects" class="projects manga-chapter" aria-labelledby="projects-heading">
+        <div class="chapter-header">
+          <span class="chapter-number">CH. 01-02</span>
+          <span class="chapter-title">Projects</span>
+        </div>
+        
+        <div class="project-scenes">
+          <!-- Projects populated by JavaScript -->
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2026 Aibouko. All rights reserved.</p>
+    <footer class="manga-footer">
+      <div class="footer-content">
+        <span class="end-mark">― 完 ―</span>
+        <p class="copyright">&copy; 2026 Aibouko</p>
+      </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
