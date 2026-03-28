@@ -22,3 +22,9 @@ npm-debug.log*
 
 # Agent files
 AGENTS.md
+
+# Old data files (not needed for hardcoded HTML version)
+data.json
+editor.html
+README.md
+.html-copy-blocks

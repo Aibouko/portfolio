@@ -8,9 +8,12 @@
       content="Aibouko - Game & web developer. View portfolio of Godot projects and web development work."
     />
     <title>Aibouko</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
@@ -21,7 +24,7 @@
           <span class="chapter-number">CH. 00</span>
           <span class="chapter-title">Character Profile</span>
         </div>
-        
+
         <div class="hero-panels">
           <!-- Profile Panel -->
           <div class="manga-panel panel-profile">
@@ -31,27 +34,55 @@
             <div class="panel-content">
               <div class="profile-card">
                 <div class="profile-name">
-                  <h1 id="site-title"></h1>
-                  <span class="jp-text" aria-hidden="true"></span>
+                  <h1 id="site-title">【Aibouko】</h1>
+                  <span class="jp-text" aria-hidden="true">藍坊子</span>
                 </div>
-                <p class="tagline"></p>
-                
+                <p class="tagline">Game & web developer</p>
+
                 <div class="profile-stats">
-                  <!-- Populated by JavaScript -->
+                  <div class="stat-row">
+                    <span class="stat-label">Class:</span>
+                    <span class="stat-value">Web Developer</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">Subclass:</span>
+                    <span class="stat-value">Game developer, Artist</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">Location:</span>
+                    <span class="stat-value">Munich, Germany</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">Languages:</span>
+                    <span class="stat-value">EN / DE</span>
+                  </div>
                 </div>
-                
+
                 <div class="action-buttons">
-                  <a href="#" target="_blank" rel="noopener noreferrer" class="choice-btn" aria-label="View GitHub profile">
+                  <a
+                    href="https://github.com/Aibouko"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="choice-btn"
+                    aria-label="View GitHub profile"
+                  >
                     <span class="btn-text">GitHub</span>
                   </a>
-                  <a href="#" class="choice-btn" aria-label="Send email">
+                  <a
+                    href="mailto:atipvietnghiem@gmail.com"
+                    class="choice-btn"
+                    aria-label="Send email"
+                  >
                     <span class="btn-text">Email</span>
+                  </a>
+                  <a href="blog.html" class="choice-btn" aria-label="View blog">
+                    <span class="btn-text">Blog</span>
                   </a>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <!-- Skills Panel -->
           <div class="manga-panel panel-skills">
             <div class="panel-header">
@@ -60,21 +91,29 @@
             <div class="panel-content">
               <div class="skill-tree">
                 <div class="tree-center">
-                  <span class="center-node"></span>
+                  <span class="center-node">Dev</span>
                 </div>
                 <div class="tree-branches-horizontal">
                   <div class="branch-left">
                     <div class="branch-connector left-connector"></div>
                     <div class="branch-node">
                       <span class="branch-title">Game</span>
-                      <div class="skills-group"></div>
+                      <div class="skills-group">
+                        <span class="skill-badge">Godot</span>
+                        <span class="skill-badge">GDScript</span>
+                      </div>
                     </div>
                   </div>
                   <div class="branch-right">
                     <div class="branch-connector right-connector"></div>
                     <div class="branch-node">
                       <span class="branch-title">Web</span>
-                      <div class="skills-group"></div>
+                      <div class="skills-group">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">TailwindCSS</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -83,7 +122,10 @@
                     <div class="branch-connector down-connector"></div>
                     <div class="branch-node">
                       <span class="branch-title">Tools</span>
-                      <div class="skills-group"></div>
+                      <div class="skills-group">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">GitHub</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -91,24 +133,142 @@
             </div>
           </div>
         </div>
-        
-        <button class="continue-btn" onclick="scrollToProjects()" aria-label="Continue to projects">
-          <span class="continue-text-en">▼ Continue</span>
-          <span class="continue-text-jp" aria-hidden="true">▼ 続く</span>
-        </button>
+
+        <div class="scroll-indicator" aria-hidden="true">
+          <span class="arrow">↓</span>
+        </div>
       </section>
 
       <div class="page-break" aria-hidden="true"></div>
 
       <!-- Projects Section -->
-      <section id="projects" class="projects manga-chapter" aria-labelledby="projects-heading">
+      <section
+        id="projects"
+        class="projects manga-chapter"
+        aria-labelledby="projects-heading"
+      >
         <div class="chapter-header">
           <span class="chapter-number">CH. 01-02</span>
           <span class="chapter-title">Projects</span>
         </div>
-        
+
         <div class="project-scenes">
-          <!-- Projects populated by JavaScript -->
+          <!-- PROJECT TEMPLATE - Copy this block for new projects -->
+          <!-- 
+          <article class="scene-card">
+            <div class="scene-header">
+              <span class="scene-number">Scene XX</span>
+              <span class="scene-status complete">Complete</span>
+            </div>
+            
+            <div class="scene-content">
+              <div class="scene-title-group">
+                <h3>Project Title</h3>
+                <span class="jp-text" aria-hidden="true">Japanese Title</span>
+              </div>
+              
+              <div class="speech-bubble">
+                <p class="bubble-text">「Your Quote」</p>
+                <p class="scene-description">Project description goes here...</p>
+              </div>
+              
+              <div class="scene-meta">
+                <div class="tech-stack">
+                  <span class="tech-tag">Tech1</span>
+                  <span class="tech-tag">Tech2</span>
+                </div>
+                <div class="scene-actions">
+                  <a href="https://github.com/yourusername/repo" target="_blank" rel="noopener noreferrer" class="action-btn primary">
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          -->
+
+          <!-- Scene 01: Gesture Drawing App -->
+          <article class="scene-card">
+            <div class="scene-header">
+              <span class="scene-number">Scene 01</span>
+              <span class="scene-status complete">Complete</span>
+            </div>
+
+            <div class="scene-content">
+              <div class="scene-title-group">
+                <h3>Gesture Drawing App</h3>
+                <span class="jp-text" aria-hidden="true"
+                  >ジェスチャードローイング</span
+                >
+              </div>
+
+              <div class="speech-bubble">
+                <p class="bubble-text">「Practice makes perfect」</p>
+                <p class="scene-description">
+                  A tool for artists to practice figure drawing with timed
+                  reference images. Features customizable session lengths and
+                  pose libraries.
+                </p>
+              </div>
+
+              <div class="scene-meta">
+                <div class="tech-stack">
+                  <span class="tech-tag">Godot</span>
+                  <span class="tech-tag">GDScript</span>
+                </div>
+                <div class="scene-actions">
+                  <a
+                    href="https://github.com/Aibouko/Gesture-Drawing-App"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="action-btn primary"
+                  >
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Scene 02: Bullet Hell -->
+          <article class="scene-card">
+            <div class="scene-header">
+              <span class="scene-number">Scene 02</span>
+              <span class="scene-status complete">Complete</span>
+            </div>
+
+            <div class="scene-content">
+              <div class="scene-title-group">
+                <h3>Bullet Hell</h3>
+                <span class="jp-text" aria-hidden="true">弾幕</span>
+              </div>
+
+              <div class="speech-bubble">
+                <p class="bubble-text">「Dodge or perish」</p>
+                <p class="scene-description">
+                  Top-down shooter featuring intricate bullet patterns and
+                  fast-paced gameplay. Inspired by classic danmaku games.
+                </p>
+              </div>
+
+              <div class="scene-meta">
+                <div class="tech-stack">
+                  <span class="tech-tag">Godot</span>
+                  <span class="tech-tag">GDScript</span>
+                </div>
+                <div class="scene-actions">
+                  <a
+                    href="https://github.com/Aibouko/Bullet-Hell"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="action-btn primary"
+                  >
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
     </main>

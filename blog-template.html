@@ -1,0 +1,153 @@
+<!doctype html>
+<!-- 
+  BLOG POST TEMPLATE
+  
+  To create a new blog post:
+  1. Copy this file
+  2. Rename it (e.g., blog-post-03.html)
+  3. Update the content below
+  4. Add a link to it in blog.html
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Blog post title - Aibouko's development notes" />
+    <title>Post Title | Aibouko</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <style>
+      .blog-article {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      .blog-header-full {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid var(--gutter-color);
+      }
+      
+      .blog-header-full h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .blog-header-full .jp-text {
+        display: block;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+      
+      .blog-meta-full {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+      
+      .blog-category {
+        background: var(--accent-lavender);
+        color: white;
+        padding: 0.2rem 0.8rem;
+        border-radius: 3px;
+      }
+      
+      .blog-content-full {
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+      
+      .blog-content-full p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .blog-quote-full {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(184, 169, 201, 0.1);
+        border-left: 4px solid var(--accent-lavender);
+        font-style: italic;
+      }
+      
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.2s ease;
+      }
+      
+      .back-link:hover {
+        color: var(--accent-lavender);
+      }
+      
+      @media (max-width: 600px) {
+        .blog-article {
+          padding: 1rem;
+        }
+        
+        .blog-header-full h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="manga-page">
+      <section class="blog-section manga-chapter">
+        <div class="chapter-header">
+          <span class="chapter-number">BLOG</span>
+          <span class="chapter-title">Development Notes</span>
+        </div>
+        
+        <div class="manga-panel blog-panel">
+          <a href="blog.html" class="back-link">← Back to Blog</a>
+          
+          <article class="blog-article">
+            <header class="blog-header-full">
+              <h1>【Your Post Title】</h1>
+              <span class="jp-text" aria-hidden="true">Japanese Title</span>
+              
+              <div class="blog-meta-full">
+                <span class="blog-date">Month DD, YYYY</span>
+                <span class="blog-category">Category</span>
+              </div>
+            </header>
+            
+            <p class="blog-quote-full">「Your manga-style quote」</p>
+            
+            <div class="blog-content-full">
+              <p>Your first paragraph goes here...</p>
+              
+              <p>Your second paragraph...</p>
+              
+              <p>More content...</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="manga-footer">
+      <div class="footer-content">
+        <span class="end-mark">― おわり ―</span>
+        <p class="copyright">&copy; 2026 Aibouko</p>
+      </div>
+    </footer>
+  </body>
+</html>

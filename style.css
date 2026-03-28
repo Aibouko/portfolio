@@ -47,7 +47,7 @@ body {
 
 /* Manga Page Container */
 .manga-page {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
   position: relative;
@@ -160,7 +160,7 @@ body {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding: var(--space-lg);
+  padding: var(--space-md);
 }
 
 /* Profile Card - RPG Character Card Style */
@@ -169,7 +169,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .profile-name {
@@ -587,127 +587,33 @@ h1#site-title {
     inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* Continue Button */
-.continue-btn {
-  display: block;
-  margin: var(--space-lg) auto;
-  padding: 0.75rem 3rem;
-  min-width: 200px;
-  background-color: transparent;
-  border: 2px solid var(--panel-border);
-  border-radius: 25px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.continue-btn:hover {
-  background-color: var(--accent-lavender);
-  border-color: var(--accent-lavender);
-  color: var(--page-bg);
-  box-shadow: 
-    0 8px 24px rgba(184, 169, 201, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
-}
-
-.continue-btn:focus-visible {
-  outline: 2px solid var(--accent-lavender);
-  outline-offset: 4px;
-}
-
-/* Continue Button Text - English default, Japanese on hover */
-.continue-btn {
-  position: relative;
-  overflow: hidden;
-  min-height: 50px;
+/* Scroll Indicator */
+.scroll-indicator {
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
-.continue-text-en,
-.continue-text-jp {
-  font-size: 1.2rem;
-  letter-spacing: 0.1em;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  margin: 0;
-  top: 50%;
-  margin-top: -0.6em;
+.scroll-indicator .arrow {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  animation: gentleBounce 2s ease-in-out infinite;
+  opacity: 0.6;
+  transition: all 0.3s ease;
 }
 
-.continue-text-en {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+.scroll-indicator:hover .arrow {
   opacity: 1;
+  color: var(--accent-lavender);
 }
 
-.continue-text-jp {
-  font-family: 'Noto Sans JP', sans-serif;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.continue-btn:hover .continue-text-en {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.1s ease;
-}
-
-.continue-btn:hover .continue-text-jp {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease;
-}
-
-.continue-text-en {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  opacity: 1;
-  animation: gentleFloatBtn 3s ease-in-out infinite;
-  transition: opacity 0s ease;
-  top: 50%;
-  margin-top: -0.6em;
-}
-
-.continue-text-jp {
-  font-family: 'Noto Sans JP', sans-serif;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  top: 50%;
-  margin-top: -0.6em;
-}
-
-.continue-btn:hover .continue-text-en {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.15s ease;
-}
-
-.continue-btn:hover .continue-text-jp {
-  opacity: 1;
-  visibility: visible;
-  animation: gentleFloatBtn 3s ease-in-out infinite;
-  transition: opacity 0.3s ease 0.15s;
-}
-
-@keyframes gentleFloatBtn {
-  0%, 100% { 
-    transform: translateX(-50%) translateY(0); 
-    opacity: 0.7; 
+@keyframes gentleBounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  50% { 
-    transform: translateX(-50%) translateY(6px); 
-    opacity: 1; 
+  50% {
+    transform: translateY(8px);
   }
 }
 
@@ -1057,7 +963,7 @@ h1#site-title {
     border: 1px solid #ccc;
   }
   
-  .continue-btn,
+  .scroll-indicator,
   .jp-text {
     display: none;
   }
