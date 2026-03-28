@@ -25,11 +25,41 @@
         gap: 2rem;
       }
       
+      /* BLOG CARD TEMPLATE - Copy this block for new blog posts */
+      /*
+      <article class="blog-card">
+        <a href="blog/blog-post-XX.html" class="blog-card-link">
+          <div class="blog-header">
+            <div class="blog-title-group">
+              <h3>【Post Title】</h3>
+              <span class="jp-text" aria-hidden="true">Japanese Title</span>
+            </div>
+            <div class="blog-meta">
+              <span class="blog-date">Month DD, YYYY</span>
+              <span class="blog-category">Category</span>
+            </div>
+          </div>
+          
+          <div class="blog-content">
+            <p class="blog-quote">「Your Quote」</p>
+            <p class="blog-excerpt">Excerpt or preview...</p>
+          </div>
+        </a>
+      </article>
+      */
+      
       .blog-card {
         background: #fff;
         border: 2px solid var(--border-color);
         position: relative;
         overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .blog-card:hover {
+        border-color: var(--accent-lavender);
+        box-shadow: 0 8px 24px rgba(184, 169, 201, 0.15);
+        transform: translateY(-3px);
       }
       
       .blog-card::before {
@@ -40,6 +70,12 @@
         right: 0;
         height: 4px;
         background: var(--accent-lavender);
+      }
+      
+      .blog-card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
       }
       
       .blog-header {
@@ -123,8 +159,18 @@
         color: var(--accent-lavender);
       }
       
-      .back-arrow {
-        font-size: 1.2rem;
+      .template-note {
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
+      
+      .template-note h4 {
+        margin: 0 0 0.5rem 0;
+        color: #856404;
       }
       
       @media (max-width: 600px) {
@@ -157,8 +203,60 @@
             <span>Back to Portfolio</span>
           </a>
           
-          <div class="blog-list" id="blog-container">
-            <!-- Blog posts populated by JavaScript -->
+          <div class="template-note">
+            <h4>How to Add a New Blog Post:</h4>
+            <ol>
+              <li>Copy <code>blog/blog-template.html</code></li>
+              <li>Rename it in the blog folder (e.g., <code>blog/blog-post-03.html</code>)</li>
+              <li>Fill in your content</li>
+              <li>Copy the blog card template from the CSS comment above</li>
+              <li>Paste it below as a new article</li>
+              <li>Update the link to point to your new post (href="blog/blog-post-XX.html")</li>
+            </ol>
+          </div>
+          
+          <div class="blog-list">
+            <!-- Blog Post 01 -->
+            <article class="blog-card">
+              <a href="blog/blog-post-01.html" class="blog-card-link">
+                <div class="blog-header">
+                  <div class="blog-title-group">
+                    <h3>【The Art of Bullet Patterns】</h3>
+                    <span class="jp-text" aria-hidden="true">弾幕の芸術</span>
+                  </div>
+                  <div class="blog-meta">
+                    <span class="blog-date">March 28, 2026</span>
+                    <span class="blog-category">Game Dev</span>
+                  </div>
+                </div>
+                
+                <div class="blog-content">
+                  <p class="blog-quote">「Every pattern has a rhythm」</p>
+                  <p class="blog-excerpt">Designing bullet hell patterns is like composing music. Each wave follows a tempo, each formation has harmony...</p>
+                </div>
+              </a>
+            </article>
+
+            <!-- Blog Post 02 -->
+            <article class="blog-card">
+              <a href="blog/blog-post-02.html" class="blog-card-link">
+                <div class="blog-header">
+                  <div class="blog-title-group">
+                    <h3>【Building This Portfolio】</h3>
+                    <span class="jp-text" aria-hidden="true">ポートフォリオ作成記</span>
+                  </div>
+                  <div class="blog-meta">
+                    <span class="blog-date">March 20, 2026</span>
+                    <span class="blog-category">Web Dev</span>
+                  </div>
+                </div>
+                
+                <div class="blog-content">
+                  <p class="blog-quote">「Web design is visual storytelling」</p>
+                  <p class="blog-excerpt">Creating a manga-themed portfolio was an interesting challenge. I wanted to capture the aesthetic of Japanese comics...</p>
+                </div>
+              </a>
+            </article>
           </div>
         </div>
       </section>
@@ -170,83 +268,5 @@
         <p class="copyright">&copy; 2026 Aibouko</p>
       </div>
     </footer>
-
-    <script>
-      (function() {
-        'use strict';
-        
-        // XSS Protection: Escape HTML to prevent injection attacks
-        function escapeHtml(unsafe) {
-          if (typeof unsafe !== 'string') return unsafe;
-          return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-        }
-        
-        function formatDate(dateStr) {
-          const date = new Date(dateStr);
-          return date.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-          });
-        }
-        
-        function renderBlog(blogData) {
-          const container = document.getElementById('blog-container');
-          if (!container) return;
-          
-          if (!blogData || blogData.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No blog posts yet. Add some in data.json!</p>';
-            return;
-          }
-          
-          container.innerHTML = blogData.map(post => `
-            <article class="blog-card">
-              <div class="blog-header">
-                <div class="blog-title-group">
-                  <h3>【${escapeHtml(post.title)}】</h3>
-                  <span class="jp-text" aria-hidden="true">${escapeHtml(post.jpTitle)}</span>
-                </div>
-                <div class="blog-meta">
-                  <span class="blog-date">${formatDate(post.date)}</span>
-                  <span class="blog-category">${escapeHtml(post.category)}</span>
-                </div>
-              </div>
-              
-              <div class="blog-content">
-                <p class="blog-quote">「${escapeHtml(post.quote)}」</p>
-                <p class="blog-excerpt">${escapeHtml(post.content)}</p>
-              </div>
-            </article>
-          `).join('');
-        }
-        
-        async function loadBlog() {
-          try {
-            const response = await fetch('data.json');
-            if (!response.ok) throw new Error('Failed to load data');
-            const data = await response.json();
-            renderBlog(data.blog);
-          } catch (error) {
-            console.error('Could not load blog data:', error);
-            const container = document.getElementById('blog-container');
-            if (container) {
-              container.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Could not load blog posts. Please check that data.json exists and is valid.</p>';
-            }
-          }
-        }
-        
-        // Initialize
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', loadBlog);
-        } else {
-          loadBlog();
-        }
-      })();
-    </script>
   </body>
 </html>
