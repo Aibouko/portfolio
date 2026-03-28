@@ -166,31 +166,349 @@
                 only need <strong> One file.</strong>
               </p>
 
-              <p>I could use fzf for fast finding, but that's overkill. I can just scroll down and it's there.</p>
+              <p>
+                I could use fzflua for fast finding, but that's overkill. I can
+                just scroll down and it's there.
+              </p>
 
-              <p>Here's the whole structure of my 261 lines:</p>
+              <p>Here's the whole config - all 268 lines:</p>
 
-              <pre><code><span class="code-comment">-- Lines 1-24: Basic options</span>
-vim.opt.mouse = <span class="code-string">""</span>
-vim.opt.relativenumber = <span class="code-keyword">true</span>
-vim.opt.clipboard = <span class="code-string">"unnamedplus"</span>
-<span class="code-comment">-- ... etc</span>
+              <style>
+                details {
+                  margin-bottom: 1rem;
+                  border: 1px solid var(--panel-border);
+                  border-radius: 4px;
+                  overflow: hidden;
+                }
+                summary {
+                  padding: 0.75rem 1rem;
+                  background: rgba(184, 169, 201, 0.1);
+                  cursor: pointer;
+                  font-weight: 500;
+                  user-select: none;
+                }
+                summary:hover {
+                  background: rgba(184, 169, 201, 0.2);
+                }
+                details > pre {
+                  margin: 0;
+                  max-height: 400px;
+                  overflow-y: auto;
+                }
+                details > pre > code {
+                  display: block;
+                  padding: 1rem;
+                  background: #2d3436;
+                  color: #dfe6e9;
+                  font-size: 0.85rem;
+                  line-height: 1.5;
+                }
+              </style>
 
-<span class="code-comment">-- Lines 26-41: Plugin definitions (vim.pack)</span>
-vim.pack.add({
-  { src = <span class="code-string">"https://github.com/neovim/nvim-lspconfig"</span> },
-  { src = <span class="code-string">"https://github.com/Saghen/blink.cmp"</span> },
-  { src = <span class="code-string">"https://github.com/echasnovski/mini.nvim"</span> },
-  <span class="code-comment">-- ... all my plugins</span>
+              <details>
+                <summary>▶ Lines 1-24: Options</summary>
+                <pre><code><span class="code-keyword">vim</span>.loader.enable()
+
+<span class="code-keyword">vim</span>.opt.mouse = <span class="code-string">""</span>
+<span class="code-keyword">vim</span>.opt.swapfile = <span class="code-keyword">false</span>
+<span class="code-keyword">vim</span>.opt.relativenumber = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.conceallevel = <span class="code-number">2</span>
+<span class="code-keyword">vim</span>.opt.confirm = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.clipboard = <span class="code-string">"unnamedplus"</span>
+<span class="code-keyword">vim</span>.opt.winborder = <span class="code-string">"rounded"</span>
+<span class="code-keyword">vim</span>.opt.tabstop = <span class="code-number">2</span>
+<span class="code-keyword">vim</span>.opt.shiftwidth = <span class="code-number">2</span>
+<span class="code-keyword">vim</span>.opt.showtabline = <span class="code-number">2</span>
+<span class="code-keyword">vim</span>.opt.scrolloff = <span class="code-number">8</span>
+<span class="code-keyword">vim</span>.opt.signcolumn = <span class="code-string">"yes"</span>
+<span class="code-keyword">vim</span>.opt.wrap = <span class="code-keyword">false</span>
+<span class="code-keyword">vim</span>.opt.ignorecase = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.smartindent = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.termguicolors = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.undofile = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.number = <span class="code-keyword">true</span>
+<span class="code-keyword">vim</span>.opt.updatetime = <span class="code-number">300</span>
+<span class="code-keyword">vim</span>.opt.smoothscroll = <span class="code-keyword">true</span>
+
+<span class="code-keyword">vim</span>.g.mapleader = <span class="code-string">" "</span></code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 26-42: Plugins</summary>
+                <pre><code><span class="code-keyword">vim</span>.pack.add({
+	{ src = <span class="code-string">"https://github.com/neovim/nvim-lspconfig"</span> },
+	{ src = <span class="code-string">"https://github.com/williamboman/mason.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/williamboman/mason-lspconfig.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/Saghen/blink.cmp"</span> },
+	{ src = <span class="code-string">"https://github.com/L3MON4D3/LuaSnip"</span> },
+	{ src = <span class="code-string">"https://github.com/rafamadriz/friendly-snippets"</span> },
+	{ src = <span class="code-string">"https://github.com/echasnovski/mini.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/rebelot/kanagawa.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/ibhagwan/fzf-lua"</span> },
+	{ src = <span class="code-string">"https://github.com/stevearc/conform.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/nvim-treesitter/nvim-treesitter"</span> },
+	{ src = <span class="code-string">"https://github.com/obsidian-nvim/obsidian.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/MeanderingProgrammer/render-markdown.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/barrett-ruth/live-server.nvim"</span> },
+	{ src = <span class="code-string">"https://github.com/christoomey/vim-tmux-navigator"</span> },
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 44-64: LSP & Diagnostics</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"mason"</span>).setup()
+<span class="code-function">require</span>(<span class="code-string">"mason-lspconfig"</span>).setup({
+	ensure_installed = { <span class="code-string">"bashls"</span>, <span class="code-string">"clangd"</span>, <span class="code-string">"lua_ls"</span>, <span class="code-string">"marksman"</span> },
+	handlers = {
+		<span class="code-keyword">function</span>(server_name)
+			<span class="code-function">require</span>(<span class="code-string">"lspconfig"</span>)[server_name].setup({
+				root_dir = <span class="code-keyword">function</span>()
+					<span class="code-keyword">return</span> <span class="code-keyword">vim</span>.fn.getcwd()
+				<span class="code-keyword">end</span>,
+			})
+		<span class="code-keyword">end</span>,
+	},
 })
 
-<span class="code-comment">-- Lines 43-93: LSP and language support</span>
-<span class="code-comment">-- Lines 94-113: Autocompletion (blink.cmp)</span>
-<span class="code-comment">-- Lines 115-155: Mini.nvim setup</span>
-<span class="code-comment">-- Lines 157-174: Formatting with conform</span>
-<span class="code-comment">-- Lines 176-201: Obsidian for notes</span>
-<span class="code-comment">-- Lines 205-253: Keymaps</span>
-<span class="code-comment">-- Line 261: Colorscheme</span></code></pre>
+<span class="code-keyword">vim</span>.diagnostic.config({
+	virtual_text = { severity = <span class="code-keyword">vim</span>.diagnostic.severity.ERROR },
+	signs = <span class="code-keyword">true</span>,
+	underline = <span class="code-keyword">true</span>,
+	update_in_insert = <span class="code-keyword">false</span>,
+	float = { severity_sort = <span class="code-keyword">true</span>, border = <span class="code-string">"rounded"</span> },
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 66-85: Treesitter</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"nvim-treesitter"</span>).setup({
+	ensure_installed = {
+		<span class="code-string">"c"</span>,
+		<span class="code-string">"lua"</span>,
+		<span class="code-string">"vim"</span>,
+		<span class="code-string">"vimdoc"</span>,
+		<span class="code-string">"query"</span>,
+		<span class="code-string">"markdown"</span>,
+		<span class="code-string">"markdown_inline"</span>,
+		<span class="code-string">"html"</span>,
+		<span class="code-string">"css"</span>,
+		<span class="code-string">"javascript"</span>,
+		<span class="code-string">"typescript"</span>,
+		<span class="code-string">"json"</span>,
+		<span class="code-string">"bash"</span>,
+		<span class="code-string">"svelte"</span>,
+	},
+	sync_install = <span class="code-keyword">false</span>,
+	auto_install = <span class="code-keyword">false</span>,
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 87-93: LuaSnip</summary>
+                <pre><code><span class="code-keyword">local</span> ls = <span class="code-function">require</span>(<span class="code-string">"luasnip"</span>)
+ls.setup({ enable_autosnippets = <span class="code-keyword">true</span> })
+<span class="code-function">require</span>(<span class="code-string">"luasnip.loaders.from_vscode"</span>).load({
+	paths = { <span class="code-keyword">vim</span>.fn.stdpath(<span class="code-string">"data"</span>) .. <span class="code-string">"/site/pack/core/opt/friendly-snippets"</span> },
+})
+ls.filetype_extend(<span class="code-string">"javascript"</span>, { <span class="code-string">"javascriptreact"</span> })
+ls.filetype_extend(<span class="code-string">"typescript"</span>, { <span class="code-string">"typescriptreact"</span> })</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 95-114: blink.cmp</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"blink.cmp"</span>).setup({
+	keymap = { preset = <span class="code-string">"default"</span>, [<span class="code-string">"&lt;C-k&gt;"</span>] = { <span class="code-string">"show_documentation"</span> } },
+	sources = { default = { <span class="code-string">"lsp"</span>, <span class="code-string">"buffer"</span>, <span class="code-string">"snippets"</span>, <span class="code-string">"path"</span> } },
+	completion = {
+		accept = { auto_brackets = { enabled = <span class="code-keyword">false</span> } },
+		documentation = { auto_show = <span class="code-keyword">true</span> },
+		menu = {
+			draw = {
+				components = {
+					kind_icon = {
+						text = <span class="code-keyword">function</span>(ctx)
+							<span class="code-keyword">return</span> <span class="code-function">require</span>(<span class="code-string">"mini.icons"</span>).get(<span class="code-string">"lsp"</span>, ctx.kind) <span class="code-keyword">or</span> <span class="code-string">""</span>
+						<span class="code-keyword">end</span>,
+					},
+				},
+			},
+		},
+	},
+	signature = { window = { border = <span class="code-string">"single"</span> } },
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 116-156: mini.nvim</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"mini.statusline"</span>).setup()
+<span class="code-function">require</span>(<span class="code-string">"mini.pairs"</span>).setup()
+<span class="code-function">require</span>(<span class="code-string">"mini.icons"</span>).setup()
+<span class="code-function">require</span>(<span class="code-string">"mini.files"</span>).setup({ windows = { preview = <span class="code-keyword">true</span> } })
+
+<span class="code-keyword">local</span> miniclue = <span class="code-function">require</span>(<span class="code-string">"mini.clue"</span>)
+<span class="code-function">require</span>(<span class="code-string">"mini.clue"</span>).setup({
+	window = { config = { anchor = <span class="code-string">"SW"</span>, row = <span class="code-string">"auto"</span>, col = <span class="code-string">"auto"</span> }, delay = <span class="code-number">0</span> },
+	triggers = {
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;Leader&gt;"</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">"&lt;Leader&gt;"</span> },
+		{ mode = <span class="code-string">"i"</span>, keys = <span class="code-string">"&lt;C-x&gt;"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"g"</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">"g"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"'"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"`"</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">"'"</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">"`"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">'"'</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">'"'</span> },
+		{ mode = <span class="code-string">"i"</span>, keys = <span class="code-string">"&lt;C-r&gt;"</span> },
+		{ mode = <span class="code-string">"c"</span>, keys = <span class="code-string">"&lt;C-r&gt;"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;C-w&gt;"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"z"</span> },
+		{ mode = <span class="code-string">"x"</span>, keys = <span class="code-string">"z"</span> },
+	},
+	clues = {
+		miniclue.gen_clues.builtin_completion(),
+		miniclue.gen_clues.g(),
+		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.registers(),
+		miniclue.gen_clues.windows(),
+		miniclue.gen_clues.z(),
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;f"</span>, desc = <span class="code-string">"FzfLua"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;n"</span>, desc = <span class="code-string">"Note Taking"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;l"</span>, desc = <span class="code-string">"Live Server"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;c"</span>, desc = <span class="code-string">"Clear/Search"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;p"</span>, desc = <span class="code-string">"Plugins"</span> },
+		{ mode = <span class="code-string">"n"</span>, keys = <span class="code-string">"&lt;leader&gt;o"</span>, desc = <span class="code-string">"File Explorer"</span> },
+	},
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 158-175: Formatting</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"conform"</span>).setup({
+	formatters_by_ft = {
+		html = { <span class="code-string">"prettier"</span> },
+		css = { <span class="code-string">"prettier"</span> },
+		lua = { <span class="code-string">"stylua"</span> },
+		markdown = { <span class="code-string">"prettier"</span> },
+		c = { <span class="code-string">"clang-format"</span> },
+		cpp = { <span class="code-string">"clang-format"</span> },
+		javascript = { <span class="code-string">"prettier"</span> },
+		typescript = { <span class="code-string">"prettier"</span> },
+		json = { <span class="code-string">"prettier"</span> },
+		jsonc = { <span class="code-string">"prettier"</span> },
+		javascriptreact = { <span class="code-string">"prettier"</span> },
+		typescriptreact = { <span class="code-string">"prettier"</span> },
+		svelte = { <span class="code-string">"prettier"</span> },
+	},
+	format_on_save = { timeout_ms = <span class="code-number">500</span>, lsp_format = <span class="code-string">"fallback"</span> },
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 177-202: Obsidian & Markdown</summary>
+                <pre><code><span class="code-function">require</span>(<span class="code-string">"obsidian"</span>).setup({
+	ft = <span class="code-string">"markdown"</span>,
+	completion = { blink = <span class="code-keyword">true</span> },
+	workspaces = { { path = <span class="code-keyword">vim</span>.fn.expand(<span class="code-string">"~/Documents/Kaizen"</span>) } },
+	legacy_commands = <span class="code-keyword">false</span>,
+	note_id_func = <span class="code-keyword">function</span>(title)
+		<span class="code-keyword">if</span> title <span class="code-keyword">and</span> title ~= <span class="code-string">""</span> <span class="code-keyword">then</span>
+			<span class="code-keyword">return</span> title:gsub(<span class="code-string">" "</span>, <span class="code-string">"-"</span>):gsub(<span class="code-string">"[^A-Za-z0-9-]"</span>, <span class="code-string">""</span>):lower()
+		<span class="code-keyword">end</span>
+		<span class="code-keyword">return</span> <span class="code-function">tostring</span>(os.time())
+	<span class="code-keyword">end</span>,
+	picker = {
+		name = <span class="code-string">"fzf-lua"</span>,
+		note_mappings = { new = <span class="code-string">"&lt;C-x&gt;"</span>, insert_link = <span class="code-string">"&lt;C-l&gt;"</span> },
+		tag_mappings = { tag_note = <span class="code-string">"&lt;C-x&gt;"</span>, insert_tag = <span class="code-string">"&lt;C-l&gt;"</span> },
+	},
+	daily_notes = { template = <span class="code-string">"Daily Note Temp"</span>, folder = <span class="code-string">"."</span>, default_tags = { <span class="code-string">"daily"</span> } },
+	templates = { enabled = <span class="code-keyword">true</span>, folder = <span class="code-string">"Templates"</span> },
+})
+
+<span class="code-function">require</span>(<span class="code-string">"render-markdown"</span>).setup({
+	enabled = <span class="code-keyword">true</span>,
+	completions = { lsp = { enabled = <span class="code-keyword">true</span> } },
+	file_types = { <span class="code-string">"markdown"</span>, <span class="code-string">"quarto"</span> },
+	win_options = { conceallevel = { default = <span class="code-keyword">vim</span>.o.conceallevel, rendered = <span class="code-number">3</span> } },
+})</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 204-206: Live Server</summary>
+                <pre><code><span class="code-keyword">vim</span>.g.live_server = { port = <span class="code-number">1337</span>, browser = <span class="code-keyword">false</span> }
+
+<span class="code-function">require</span>(<span class="code-string">"fzf-lua"</span>).setup({ winopts = { height = <span class="code-number">0.7</span>, width = <span class="code-number">0.8</span>, border = <span class="code-string">"rounded"</span> } })</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 208-259: Keymaps</summary>
+                <pre><code><span class="code-keyword">local</span> map = <span class="code-keyword">vim</span>.keymap.set
+<span class="code-keyword">local</span> opts = { noremap = <span class="code-keyword">true</span>, silent = <span class="code-keyword">true</span> }
+<span class="code-keyword">local</span> fzf = <span class="code-function">require</span>(<span class="code-string">"fzf-lua"</span>)
+
+<span class="code-keyword">vim</span>.g.tmux_navigator_no_mappings = <span class="code-number">1</span>
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;C-h&gt;"</span>, <span class="code-string">":TmuxNavigateLeft&lt;CR&gt;"</span>, opts)
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;C-j&gt;"</span>, <span class="code-string">":TmuxNavigateDown&lt;CR&gt;"</span>, opts)
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;C-k&gt;"</span>, <span class="code-string">":TmuxNavigateUp&lt;CR&gt;"</span>, opts)
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;C-l&gt;"</span>, <span class="code-string">":TmuxNavigateRight&lt;CR&gt;"</span>, opts)
+
+map(<span class="code-string">"n"</span>, <span class="code-string">"-"</span>, <span class="code-keyword">function</span>()
+	<span class="code-function">require</span>(<span class="code-string">"mini.files"</span>).open(<span class="code-keyword">vim</span>.api.nvim_buf_get_name(<span class="code-number">0</span>))
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Open file explorer"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;oo"</span>, <span class="code-keyword">function</span>()
+	<span class="code-function">require</span>(<span class="code-string">"mini.files"</span>).open()
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"File explorer"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;lt"</span>, <span class="code-string">":LiveServerToggle&lt;CR&gt;"</span>, { desc = <span class="code-string">"Toggle live server"</span> })
+
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;nn"</span>, <span class="code-keyword">function</span>()
+	<span class="code-keyword">vim</span>.cmd(<span class="code-string">"Obsidian new_from_template"</span>)
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"New note"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;ns"</span>, <span class="code-keyword">function</span>()
+	<span class="code-keyword">vim</span>.cmd(<span class="code-string">"Obsidian quick_switch"</span>)
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Switch note"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;nd"</span>, <span class="code-keyword">function</span>()
+	<span class="code-keyword">vim</span>.cmd(<span class="code-string">"Obsidian today"</span>)
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Today's note"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;ng"</span>, <span class="code-keyword">function</span>()
+	<span class="code-keyword">vim</span>.cmd(<span class="code-string">"Obsidian search"</span>)
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Search notes"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;nP"</span>, <span class="code-keyword">function</span>()
+	<span class="code-keyword">vim</span>.cmd(<span class="code-string">"Obsidian paste_img"</span>)
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Paste image"</span> })
+
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;ff"</span>, <span class="code-keyword">function</span>()
+	fzf.files()
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Find files"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;fw"</span>, <span class="code-keyword">function</span>()
+	fzf.live_grep()
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Live grep"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;fd"</span>, <span class="code-keyword">function</span>()
+	fzf.diagnostics_document()
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Document diagnostics"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;fh"</span>, <span class="code-keyword">function</span>()
+	fzf.help_tags()
+<span class="code-keyword">end</span>, { desc = <span class="code-string">"Help tags"</span> })
+
+map(<span class="code-string">"i"</span>, <span class="code-string">"jj"</span>, <span class="code-string">"&lt;Esc&gt;"</span>, opts)
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;cs"</span>, <span class="code-string">":let @/ = ''&lt;CR&gt;"</span>, { desc = <span class="code-string">"Clear search"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;fr"</span>, <span class="code-keyword">vim</span>.lsp.buf.hover, { desc = <span class="code-string">"LSP hover"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;pr"</span>, <span class="code-string">":update&lt;CR&gt;:source&lt;CR&gt;"</span>, { desc = <span class="code-string">"Reload config"</span> })
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;pu"</span>, <span class="code-string">":lua vim.pack.update()&lt;CR&gt;"</span>, { desc = <span class="code-string">"Update plugins"</span> })</code></pre>
+              </details>
+
+              <details>
+                <summary>▶ Lines 261-268: Autocmd & Colorscheme</summary>
+                <pre><code><span class="code-keyword">vim</span>.api.nvim_create_autocmd(<span class="code-string">"TextYankPost"</span>, {
+	group = <span class="code-keyword">vim</span>.api.nvim_create_augroup(<span class="code-string">"highlight-yank"</span>, { clear = <span class="code-keyword">true</span> }),
+	callback = <span class="code-keyword">function</span>()
+		<span class="code-keyword">vim</span>.hl.on_yank()
+	<span class="code-keyword">end</span>,
+})
+
+<span class="code-keyword">vim</span>.cmd(<span class="code-string">"colorscheme kanagawa"</span>)</code></pre>
+              </details>
 
               <p>Clean and small.</p>
 
