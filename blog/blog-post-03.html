@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Why I Keep My Neovim Config in One File - Aibouko's development notes" />
-    <title>Why I Keep My Neovim Config in One File | Aibouko</title>
+    <meta name="description" content="My 744-Line Neovim Config - Aibouko's development notes" />
+    <title>My 744-Line Neovim Config | Aibouko</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
@@ -136,7 +136,7 @@
           
           <article class="blog-article">
             <header class="blog-header-full">
-              <h1>【Why I Keep My Neovim Config in One File】</h1>
+              <h1>【My 744-Line Neovim Config】</h1>
               <span class="jp-text" aria-hidden="true">単一ファイルの設定</span>
               
               <div class="blog-meta-full">
@@ -148,99 +148,134 @@
             <p class="blog-quote-full">「Simplicity is the ultimate sophistication」</p>
             
             <div class="blog-content-full">
-              <p>I've been using Neovim for a while now, and one question I keep getting is: "Why do you keep everything in a single init.lua instead of splitting it into multiple files?" Today I'll explain my philosophy, the plugins that power my workflow, and why Neovim has become my editor of choice.</p>
+              <p>My Neovim configuration lives in a single file: <code>init.lua</code>. It's 744 lines, includes everything from keymaps to LSP setup to a custom note-taking system, and it loads blazingly fast. People ask why I don't split it. Let me explain.</p>
               
-              <h2>1. Why One File? The Beauty of init.lua</h2>
+              <h2>1. Why One File? Speed and Sanity</h2>
               
-              <p>Most Neovim users eventually split their config into a modular structure: <code>plugins.lua</code>, <code>keymaps.lua</code>, <code>settings.lua</code>, and so on. It's the recommended approach. So why do I resist?</p>
+              <p>Everyone says to modularize. Put plugins in <code>lua/plugins/</code>, keymaps in <code>lua/keymaps.lua</code>, options in <code>lua/options.lua</code>. But here's the thing: <strong>every require() is a file system call</strong>.</p>
               
-              <p><strong>It's all about cognitive load.</strong> When I open my config, I want to see everything at once. No jumping between files, no remembering where I put that specific keymap, no mental context switching. Just one scrollable document where I can find anything in seconds.</p>
+              <p>When Neovim starts, it has to hit the disk for each module. On a fast SSD that's negligible, but on slower systems or when you're opening files constantly, it adds up. My single-file approach eliminates all that I/O.</p>
               
-              <p>Here's how I organize my single file:</p>
+              <p>More importantly: <strong>I know exactly where everything is.</strong> Need to tweak my LSP settings? Scroll down. Want to add a keymap? Search for "KEYMAPS". There's no mental overhead of remembering which file contains what.</p>
+              
+              <p>Here's how I organize my 744 lines:</p>
               
               <pre><code><span class="code-comment">-- ==========================================</span>
-<span class="code-comment">-- NEOVIM CONFIG - Everything in one place</span>
+<span class="code-comment">-- SECTION 1: Options (fastest - set immediately)</span>
 <span class="code-comment">-- ==========================================</span>
+vim.opt.mouse = <span class="code-string">""</span>
+vim.opt.relativenumber = <span class="code-keyword">true</span>
+vim.opt.conceallevel = <span class="code-number">2</span>
+vim.opt.clipboard = <span class="code-string">"unnamedplus"</span>
+<span class="code-comment">-- ... more options</span>
 
-<span class="code-comment">-- SECTION 1: Options & Settings</span>
-<span class="code-keyword">local</span> <span class="code-function">opt</span> = vim.opt
-opt.number = <span class="code-keyword">true</span>
-opt.relativenumber = <span class="code-keyword">true</span>
-opt.tabstop = <span class="code-number">2</span>
-opt.shiftwidth = <span class="code-number">2</span>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- SECTION 2: Plugin Management (vim.pack)</span>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- Using Neovim 0.11+ built-in plugin manager</span>
+vim.pack.add({
+  { src = <span class="code-string">"https://github.com/neovim/nvim-lspconfig"</span> },
+  { src = <span class="code-string">"https://github.com/Saghen/blink.cmp"</span> },
+  <span class="code-comment">-- ...</span>
+})
 
-<span class="code-comment">-- SECTION 2: Keymaps</span>
-<span class="code-keyword">local</span> <span class="code-function">map</span> = vim.keymap.set
-map(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;ff'</span>, <span class="code-string">':Telescope find_files&lt;CR&gt;'</span>)
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- SECTION 3: LSP Configuration</span>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- Deferred setup - only loads when opening files</span>
 
-<span class="code-comment">-- SECTION 3: Plugin Setup</span>
-<span class="code-comment">-- (Using lazy.nvim for plugin management)</span></code></pre>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- SECTION 4: Keymaps</span>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-keyword">local</span> map = vim.keymap.set
+map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&gt;ff"</span>, <span class="code-keyword">function</span>() fzf_lazy.files() <span class="code-keyword">end</span>)
+<span class="code-comment">-- ...</span>
+
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- SECTION 5: Colorscheme</span>
+<span class="code-comment">-- ==========================================</span>
+vim.cmd(<span class="code-string">"colorscheme kanagawa"</span>)
+
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- SECTION 6: Custom Capture Module (~240 lines)</span>
+<span class="code-comment">-- ==========================================</span>
+<span class="code-comment">-- My note-taking system, inlined to avoid file I/O</span></code></pre>
               
-              <p>With clear section comments and consistent organization, my ~300 line init.lua is actually <em>easier</em> to navigate than a scattered modular setup. When something breaks, I know exactly where to look.</p>
+              <p>Clear sections, logical flow, and zero <code>require()</code> calls slowing things down.</p>
               
-              <h2>2. My Essential Plugins</h2>
+              <h2>2. What I Actually Use</h2>
               
-              <p>I don't use many plugins. I believe in a minimal setup that gets out of my way. Here are the ones I actually need:</p>
+              <p>I don't have 50 plugins. I have maybe 15, and half are lazy-loaded. Here's what actually matters:</p>
               
-              <h3>File Finding & Navigation</h3>
+              <h3>The Essentials (Immediate Load)</h3>
               
-              <p><strong>Telescope</strong> is my window into the project. Fuzzy finding files, grepping code, searching buffers - it's all there.</p>
+              <p><strong>vim.pack</strong> - Neovim 0.11+'s built-in plugin manager. No external dependency, no lua files to require, just pure speed. It replaced lazy.nvim for me because I don't need the complexity.</p>
               
-              <pre><code><span class="code-comment">-- Telescope for fuzzy finding</span>
-{
-  <span class="code-string">'nvim-telescope/telescope.nvim'</span>,
-  dependencies = { <span class="code-string">'nvim-lua/plenary.nvim'</span> },
-  config = <span class="code-keyword">function</span>()
-    <span class="code-keyword">local</span> <span class="code-function">builtin</span> = <span class="code-function">require</span>(<span class="code-string">'telescope.builtin'</span>)
-    vim.keymap.set(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;ff'</span>, builtin.find_files, {})
-    vim.keymap.set(<span class="code-string">'n'</span>, <span class="code-string">'&lt;leader&gt;fg'</span>, builtin.live_grep, {})
-  <span class="code-keyword">end</span>
-}</code></pre>
+              <p><strong>nvim-lspconfig + mason-lspconfig</strong> - LSP setup for bash, C/C++, Lua, and Markdown. But here's the trick: it doesn't load until you open a file. Deferred via autocmd.</p>
               
-              <h3>Language Support</h3>
+              <p><strong>blink.cmp</strong> - Completion that just works. Fast, pretty, integrates with mini.icons for those sweet file type icons.</p>
               
-              <p><strong>nvim-treesitter</strong> for better syntax highlighting and code understanding. It makes every language feel premium.</p>
+              <p><strong>mini.nvim</strong> - The Swiss Army knife. Statusline, file pairs, file explorer, icons, and mini.clue for which-key-style hints. One plugin, five problems solved.</p>
               
-              <p><strong>nvim-lspconfig</strong> for Language Server Protocol support. Go to definition, hover documentation, diagnostics - the IDE experience without the IDE bloat.</p>
+              <p><strong>Kanagawa</strong> - My colorscheme. Warm, easy on the eyes, perfect for long sessions. It's not just pretty; it's functional.</p>
               
-              <h3>The Aesthetic Touch</h3>
+              <h3>The Heavy Lifters (Lazy Loaded)</h3>
               
-              <p><strong>Catppuccin</strong> theme. I use the mocha variant - warm, easy on the eyes, perfect for long coding sessions. It matters more than you'd think.</p>
+              <p><strong>fzf-lua</strong> - Fuzzy finding for files, grep, buffers, everything. Loaded only when I hit <code>&lt;leader&gt;ff</code>. Before that, it doesn't exist in memory.</p>
               
-              <pre><code><span class="code-comment">-- Catppuccin theme setup</span>
-{
-  <span class="code-string">"catppuccin/nvim"</span>,
-  name = <span class="code-string">"catppuccin"</span>,
-  priority = <span class="code-number">1000</span>,
-  config = <span class="code-keyword">function</span>()
-    <span class="code-function">require</span>(<span class="code-string">"catppuccin"</span>).setup({
-      flavour = <span class="code-string">"mocha"</span>,
-    })
-    vim.cmd.colorscheme <span class="code-string">"catppuccin"</span>
-  <span class="code-keyword">end</span>
-}</code></pre>
+              <pre><code><span class="code-comment">-- Lazy loaded fzf-lua using metatable magic</span>
+<span class="code-keyword">local</span> fzf_lazy = <span class="code-function">setmetatable</span>({}, {
+  __index = <span class="code-keyword">function</span>(t, k)
+    <span class="code-keyword">local</span> fzf = <span class="code-function">require</span>(<span class="code-string">"fzf-lua"</span>)
+    <span class="code-keyword">if not</span> vim.g.fzf_setup_done <span class="code-keyword">then</span>
+      fzf.setup({ winopts = { height = <span class="code-number">0.7</span>, width = <span class="code-number">0.8</span> } })
+      vim.g.fzf_setup_done = <span class="code-keyword">true</span>
+    <span class="code-keyword">end</span>
+    <span class="code-function">rawset</span>(t, k, fzf[k])
+    <span class="code-keyword">return</span> fzf[k]
+  <span class="code-keyword">end</span>,
+})</code></pre>
               
-              <h3>Status Line</h3>
+              <p><strong>Obsidian + render-markdown</strong> - My note-taking system. Only loads for markdown files. Why have markdown plugins eating memory when I'm editing Lua?</p>
               
-              <p><strong>lualine.nvim</strong> - Clean, minimal, shows exactly what I need: mode, filename, git branch, line numbers. No fluff.</p>
+              <p><strong>conform.nvim</strong> - Formatting with prettier, stylua, clang-format. Loaded when needed, not before.</p>
+              
+              <p><strong>nvim-treesitter</strong> - Syntax highlighting that doesn't suck. Deferred 100ms after startup so it doesn't block.</p>
+              
+              <h3>The Custom Bits</h3>
+              
+              <p>I wrote a 240-line "Capture" module directly in my init.lua. It's a note-taking system that opens floating windows for quick capture to my Obsidian vault. No separate file, no require(), just inline Lua functions that handle:</p>
+              
+              <ul>
+                <li>Finding recent notes</li>
+                <li>Opening floating capture windows</li>
+                <li>Inserting into specific sections (Log, Todo, Learned)</li>
+                <li>Tab completion between sections</li>
+              </ul>
+              
+              <p>Could I have put this in <code>lua/capture.lua</code>? Sure. But then I'd have another file to track, another require() to slow startup, another context switch when editing.</p>
               
               <h2>3. Why Neovim?</h2>
               
-              <p>After using VS Code, Sublime Text, and various JetBrains products, why did I settle on Neovim?</p>
+              <p>After VS Code, Sublime, and various JetBrains IDEs, why Neovim?</p>
               
-              <p><strong>It's fast.</strong> No Electron bloat, no startup delays. It opens instantly, even on large projects.</p>
+              <p><strong>It's transparent.</strong> I can read every line of my 744-line config and understand exactly what it does. No magic, no hidden behaviors, no "helpful" abstractions getting in my way.</p>
               
-              <p><strong>It's consistent.</strong> The same editor on my laptop, on a remote server, in a Docker container. I SSH somewhere and my familiar environment is there.</p>
+              <p><strong>It's fast.</strong> My config loads in milliseconds. Not because I'm a genius, but because I eliminated unnecessary file I/O and deferred everything that isn't immediately needed.</p>
               
-              <p><strong>It's mine.</strong> Every keymap, every behavior, every visual choice is intentional. I understand every line of my config because I wrote it. When something breaks, I know exactly why.</p>
+              <p><strong>It's consistent.</strong> Same editor on my laptop, on a remote server via SSH, in a Docker container, on a VPS. I never have to context switch between different environments.</p>
               
-              <p><strong>It stays out of my way.</strong> No popups, no "helpful" suggestions interrupting flow, no AI autocomplete getting cocky. Just me and the text.</p>
+              <p><strong>It gets out of the way.</strong> No popups interrupting my flow. No AI autocomplete making suggestions I didn't ask for. No "smart" features trying to predict what I want. Just text and me.</p>
               
-              <h2>The Verdict</h2>
+              <h2>The Philosophy</h2>
               
-              <p>One file. Essential plugins. Total control. That's my Neovim setup, and I wouldn't have it any other way.</p>
+              <p>One file. Minimal plugins. Aggressive lazy-loading. Total understanding.</p>
               
-              <p>Is it for everyone? No. But if you value simplicity, speed, and understanding your tools at a fundamental level, consider giving the single-file approach a try. You might be surprised how liberating it is.</p>
+              <p>When something breaks, I know where to look. When I want to change something, I know where to find it. When I open Neovim, it just works, instantly.</p>
+              
+              <p>Is it for everyone? No. Some people prefer the organization of modular configs, the hand-holding of heavier plugin managers, the "batteries included" approach of VS Code. And that's fine.</p>
+              
+              <p>But if you value understanding your tools at a fundamental level, if you believe that software should get out of your way and just work, if you're willing to trade a bit of convenience for a lot of control—try the single-file approach. Start small. Keep it simple. You might be surprised how liberating it is.</p>
             </div>
           </article>
         </div>
