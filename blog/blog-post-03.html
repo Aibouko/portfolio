@@ -3,11 +3,17 @@
   <head>
     <meta charset="-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="My Neovim Config - Aibouko's development notes" />
+    <meta
+      name="description"
+      content="My Neovim Config - Aibouko's development notes"
+    />
     <title>My Neovim Config | Aibouko</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <link href="../style.css" rel="stylesheet" />
     <style>
       .blog-article {
@@ -15,28 +21,28 @@
         margin: 0 auto;
         padding: 2rem;
       }
-      
+
       .blog-header-full {
         text-align: left;
         margin-bottom: 3rem;
         padding-bottom: 2rem;
         border-bottom: 2px solid var(--gutter-color);
       }
-      
+
       .blog-header-full h1 {
-        font-family: 'Cormorant Garamond', serif;
+        font-family: "Cormorant Garamond", serif;
         font-size: 2.5rem;
         margin-bottom: 0;
       }
-      
+
       .blog-header-full .jp-text {
         display: block;
-        font-family: 'Noto Sans JP', sans-serif;
+        font-family: "Noto Sans JP", sans-serif;
         font-size: 1.2rem;
         color: var(--text-secondary);
         margin-top: 0;
       }
-      
+
       .blog-meta-full {
         display: flex;
         justify-content: flex-start;
@@ -45,50 +51,50 @@
         font-size: 0.9rem;
         color: var(--text-secondary);
       }
-      
+
       .blog-category {
         background: var(--accent-lavender);
         color: white;
         padding: 0.2rem 0.8rem;
         border-radius: 3px;
       }
-      
+
       .blog-content-full {
         line-height: 1.8;
         font-size: 1.1rem;
       }
-      
+
       .blog-content-full p {
         margin-bottom: 1.5rem;
       }
-      
+
       .blog-content-full h2 {
-        font-family: 'Cormorant Garamond', serif;
+        font-family: "Cormorant Garamond", serif;
         font-size: 1.8rem;
         margin-top: 2.5rem;
         margin-bottom: 1rem;
         color: var(--text-primary);
       }
-      
+
       .blog-content-full h3 {
-        font-family: 'Cormorant Garamond', serif;
+        font-family: "Cormorant Garamond", serif;
         font-size: 1.4rem;
         margin-top: 2rem;
         margin-bottom: 0.8rem;
         color: var(--text-secondary);
       }
-      
+
       .blog-content-full ul {
         margin-bottom: 1.5rem;
         padding-left: 2rem;
       }
-      
+
       .blog-content-full li {
         margin-bottom: 0.5rem;
       }
-      
+
       .blog-quote-full {
-        font-family: 'Noto Sans JP', sans-serif;
+        font-family: "Noto Sans JP", sans-serif;
         font-size: 1.3rem;
         text-align: center;
         margin: 2rem 0;
@@ -97,7 +103,7 @@
         border-left: 4px solid var(--accent-lavender);
         font-style: italic;
       }
-      
+
       .back-link {
         display: inline-flex;
         align-items: center;
@@ -109,16 +115,16 @@
         padding: 0.5rem 1rem;
         transition: all 0.2s ease;
       }
-      
+
       .back-link:hover {
         color: var(--accent-lavender);
       }
-      
+
       @media (max-width: 600px) {
         .blog-article {
           padding: 1rem;
         }
-        
+
         .blog-header-full h1 {
           font-size: 1.8rem;
         }
@@ -132,34 +138,38 @@
           <span class="chapter-number">BLOG</span>
           <span class="chapter-title">Development Notes</span>
         </div>
-        
+
         <div class="manga-panel blog-panel">
           <a href="../blog.html" class="back-link">← Back to Blog</a>
-          
+
           <article class="blog-article">
             <header class="blog-header-full">
               <h1>【My Neovim Config】</h1>
               <span class="jp-text" aria-hidden="true">単一ファイルの設定</span>
-              
+
               <div class="blog-meta-full">
                 <span class="blog-date">March 28, 2026</span>
                 <span class="blog-category">Dev Tools</span>
               </div>
             </header>
-            
+
             <p class="blog-quote-full">「Simple and Easy. Mine」</p>
-            
+
             <div class="blog-content-full">
               <p>My simple Neovim config. One file.</p>
-              
-              <h2>1. Why One File? It Just Makes Sense</h2>
-              
-              <p>Everyone says to split your config into modules. Put plugins in one folder, keymaps in another, settings somewhere else. But honestly? <strong>Why complicate it?</strong></p>
-              
-              <p>With one file, I know exactly where everything is. Need to change a setting? It's there. Want to add a keymap? Just scroll down. There's no "which file was that in again" moment. My brain doesn't have to context switch between files. It's giving efficiency without the complexity.</p>
-              
+
+              <h2>1. Why One File?</h2>
+
+              <p>
+                Everyone says to split your config. Put plugins in one folder,
+                keymaps in another, settings somewhere else. But for real you
+                only need <strong> One file.</strong>
+              </p>
+
+              <p>I could use fzf for fast finding, but that's overkill. I can just scroll down and it's there.</p>
+
               <p>Here's the whole structure of my 261 lines:</p>
-              
+
               <pre><code><span class="code-comment">-- Lines 1-24: Basic options</span>
 vim.opt.mouse = <span class="code-string">""</span>
 vim.opt.relativenumber = <span class="code-keyword">true</span>
@@ -181,58 +191,134 @@ vim.pack.add({
 <span class="code-comment">-- Lines 176-201: Obsidian for notes</span>
 <span class="code-comment">-- Lines 205-253: Keymaps</span>
 <span class="code-comment">-- Line 261: Colorscheme</span></code></pre>
-              
+
               <p>Clean and small.</p>
-              
+
               <h2>2. What I Actually Use</h2>
-              
-              <p>I don't have plugin bloat. Everything here serves a purpose. Here's what makes the cut:</p>
-              
+
+              <p>
+                I don't have plugin bloat. Everything here serves a purpose.
+                Here's what makes the cut:
+              </p>
+
               <h3>The Core Stack</h3>
-              
-              <p><strong>vim.pack</strong> - Neovim 0.12's built-in plugin manager. No external dependencies, no lua files to require, just native speed. Replaced my previous setup because why use a plugin when nvim has it built-in now?</p>
-              
-              <p><strong>nvim-lspconfig + mason</strong> - LSP for bash, C/C++, Lua, and Markdown. Simple setup that just works. Language servers give me autocomplete, go-to-definition, and diagnostics without the IDE bloat.</p>
-              
-              <p><strong>blink.cmp</strong> - Fast, pretty autocompletion. Integrates with mini.icons for those nice file type icons in the completion menu. Clean UI, minimal config, does the job.</p>
-              
-              <p><strong>mini.nvim</strong> - The Swiss Army knife I can't live without. Statusline, autopairs, file explorer (mini.files), icons, and mini.clue for keymap hints. One plugin, multiple problems solved. Minimalism wins.</p>
-              
-              <p><strong>Kanagawa</strong> - My colorscheme. Warm, easy on the eyes, perfect for those long coding sessions. It's not just pretty - it's functional. The vibe is immaculate.</p>
-              
+
+              <p>
+                <strong>vim.pack</strong> - Neovim 0.12's built-in plugin
+                manager. No external dependencies, no lua files to require, just
+                native speed. Replaced my previous setup because why use a
+                plugin when nvim has it built-in now?
+              </p>
+
+              <p>
+                <strong>nvim-lspconfig + mason</strong> - LSP for bash, C/C++,
+                Lua, and Markdown. Simple setup that just works. Language
+                servers give me autocomplete, go-to-definition, and diagnostics
+                without the IDE bloat.
+              </p>
+
+              <p>
+                <strong>blink.cmp</strong> - Fast, pretty autocompletion.
+                Integrates with mini.icons for those nice file type icons in the
+                completion menu. Clean UI, minimal config, does the job.
+              </p>
+
+              <p>
+                <strong>mini.nvim</strong> - The Swiss Army knife I can't live
+                without. Statusline, autopairs, file explorer (mini.files),
+                icons, and mini.clue for keymap hints. One plugin, multiple
+                problems solved. Minimalism wins.
+              </p>
+
+              <p>
+                <strong>Kanagawa</strong> - My colorscheme. Warm, easy on the
+                eyes, perfect for those long coding sessions. It's not just
+                pretty - it's functional. The vibe is immaculate.
+              </p>
+
               <h3>The Supporting Cast</h3>
-              
-              <p><strong>fzf-lua</strong> - Fuzzy finding for everything. Files, grep, buffers, help tags. Fast, reliable, and the interface just looks good. Mapped to <code>&lt;leader&gt;ff</code> for quick access.</p>
-              
-              <p><strong>Obsidian + render-markdown</strong> - My note-taking workflow. I keep my notes in <code>~/Documents/Kaizen</code> and these plugins make it seamless. Quick note creation, backlinks, daily notes, the whole system. Essential for my workflow.</p>
-              
-              <p><strong>conform.nvim</strong> - Formatting with prettier, stylua, clang-format. Format on save so I never have to think about it. My code stays clean automatically.</p>
-              
-              <p><strong>nvim-treesitter</strong> - Better syntax highlighting that actually understands the code structure. Makes every language feel premium. Worth it.</p>
-              
+
+              <p>
+                <strong>fzf-lua</strong> - Fuzzy finding for everything. Files,
+                grep, buffers, help tags. Fast, reliable, and the interface just
+                looks good. Mapped to <code>&lt;leader&gt;ff</code> for quick
+                access.
+              </p>
+
+              <p>
+                <strong>Obsidian + render-markdown</strong> - My note-taking
+                workflow. I keep my notes in <code>~/Documents/Kaizen</code> and
+                these plugins make it seamless. Quick note creation, backlinks,
+                daily notes, the whole system. Essential for my workflow.
+              </p>
+
+              <p>
+                <strong>conform.nvim</strong> - Formatting with prettier,
+                stylua, clang-format. Format on save so I never have to think
+                about it. My code stays clean automatically.
+              </p>
+
+              <p>
+                <strong>nvim-treesitter</strong> - Better syntax highlighting
+                that actually understands the code structure. Makes every
+                language feel premium. Worth it.
+              </p>
+
               <h3>For Web Development</h3>
-              
-              <p><strong>live-server.nvim</strong> - Local development server for HTML files. Simple, works, on port 1337. Toggle with <code>&lt;leader&gt;lt</code>.</p>
-              
+
+              <p>
+                <strong>live-server.nvim</strong> - Local development server for
+                HTML files. Simple, works, on port 1337. Toggle with
+                <code>&lt;leader&gt;lt</code>.
+              </p>
+
               <h2>3. Why Neovim? The Honest Answer</h2>
-              
+
               <p>After VS Code, Sublime, JetBrains - why settle on Neovim?</p>
-              
-              <p><strong>It's transparent.</strong> I can read every line of my 261-line config and understand exactly what it does. No magic, no hidden behaviors, no abstractions that get in my way. If it breaks, I know why. If I want to change it, I know where.</p>
-              
-              <p><strong>It's fast.</strong> Opens instantly. No Electron bloat, no startup delays. Just a text editor that gets out of your way.</p>
-              
-              <p><strong>It's consistent.</strong> Same editor on my laptop, on a remote server via SSH, in a container, anywhere. My muscle memory works everywhere.</p>
-              
-              <p><strong>It respects my focus.</strong> No popups interrupting flow. No AI making suggestions I didn't ask for. No "smart" features trying to be helpful. Just me and the code.</p>
-              
+
+              <p>
+                <strong>It's transparent.</strong> I can read every line of my
+                261-line config and understand exactly what it does. No magic,
+                no hidden behaviors, no abstractions that get in my way. If it
+                breaks, I know why. If I want to change it, I know where.
+              </p>
+
+              <p>
+                <strong>It's fast.</strong> Opens instantly. No Electron bloat,
+                no startup delays. Just a text editor that gets out of your way.
+              </p>
+
+              <p>
+                <strong>It's consistent.</strong> Same editor on my laptop, on a
+                remote server via SSH, in a container, anywhere. My muscle
+                memory works everywhere.
+              </p>
+
+              <p>
+                <strong>It respects my focus.</strong> No popups interrupting
+                flow. No AI making suggestions I didn't ask for. No "smart"
+                features trying to be helpful. Just me and the code.
+              </p>
+
               <h2>The Bottom Line</h2>
-              
-              <p>One file. 261 lines. Curated plugins. Total understanding of your tools.</p>
-              
-              <p>Is this for everyone? Honestly, no. Some people prefer modular configs, hand-holding plugin managers, or "batteries included" IDEs. That's totally valid.</p>
-              
-              <p>But if you value simplicity, if you believe software should get out of your way, if you want to truly understand your tools - try the single-file approach. Start small. Keep it simple. 261 lines is all you might need.</p>
+
+              <p>
+                One file. 261 lines. Curated plugins. Total understanding of
+                your tools.
+              </p>
+
+              <p>
+                Is this for everyone? Honestly, no. Some people prefer modular
+                configs, hand-holding plugin managers, or "batteries included"
+                IDEs. That's totally valid.
+              </p>
+
+              <p>
+                But if you value simplicity, if you believe software should get
+                out of your way, if you want to truly understand your tools -
+                try the single-file approach. Start small. Keep it simple. 261
+                lines is all you might need.
+              </p>
             </div>
           </article>
         </div>
