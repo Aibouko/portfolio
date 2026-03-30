@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
@@ -20,10 +20,10 @@
     <main class="manga-page">
       <!-- Hero Section -->
       <section class="hero manga-chapter" aria-labelledby="site-title">
-        <div class="chapter-header">
+        <header class="chapter-header">
           <span class="chapter-number">CH. 00</span>
           <span class="chapter-title">Character Profile</span>
-        </div>
+        </header>
 
         <div class="hero-panels">
           <!-- Profile Panel -->
@@ -134,9 +134,10 @@
           </div>
         </div>
 
-        <div class="scroll-indicator" aria-hidden="true">
-          <span class="arrow">↓</span>
-        </div>
+        <a href="#projects" class="chapter-nav" aria-label="Go to Next Chapter">
+          <span class="chapter-nav-jp">次章</span>
+          <span class="chapter-nav-text">→ Next Chapter</span>
+        </a>
       </section>
 
       <div class="page-break" aria-hidden="true"></div>
@@ -148,7 +149,7 @@
         aria-labelledby="projects-heading"
       >
         <div class="chapter-header">
-          <span class="chapter-number">CH. 01-02</span>
+          <span class="chapter-number">CH. 01</span>
           <span class="chapter-title">Projects</span>
         </div>
 
@@ -197,9 +198,7 @@
             <div class="scene-content">
               <div class="scene-title-group">
                 <h3>Quick Sketch</h3>
-                <span class="jp-text" aria-hidden="true"
-                  >クイックスケッチ</span
-                >
+                <span class="jp-text" aria-hidden="true">クイックスケッチ</span>
               </div>
 
               <div class="speech-bubble">

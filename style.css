@@ -2,15 +2,18 @@
 /* Subtle manga aesthetics with Western left-to-right reading */
 
 :root {
-  /* Manga Color Palette */
+  /* Enhanced Manga Color Palette */
   --page-bg: #faf9f6;
   --panel-bg: #fdfcfa;
+  --panel-bg-dark: #f5f4f0;
   --panel-border: rgba(45, 52, 54, 0.15);
-  --panel-border-hover: rgba(184, 169, 201, 0.5);
-  --text-primary: #2d3436;
+  --panel-border-hover: rgba(167, 139, 250, 0.5);
+  --text-primary: #1a1a2e;
   --text-secondary: #636e72;
-  --accent-lavender: #b8a9c9;
-  --accent-lavender-dark: #9b8aad;
+  --accent-lavender: #a78bfa;
+  --accent-lavender-dark: #8b5cf6;
+  --accent-manga-red: #e74c3c;
+  --ink-black: #1a1a2e;
   --gutter-color: rgba(223, 230, 233, 0.5);
   
   /* Spacing */
@@ -19,9 +22,15 @@
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 3rem;
+  --space-2xl: 4rem;
   --panel-gap: 1.5rem;
   --panel-padding: 1.5rem;
   --panel-radius: 6px;
+  
+  /* Animation Timing */
+  --anim-fast: 0.2s;
+  --anim-medium: 0.4s;
+  --anim-slow: 0.6s;
 }
 
 * {
@@ -36,7 +45,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.7;
@@ -89,17 +98,18 @@ body {
   border-radius: var(--panel-radius);
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .manga-panel:hover {
-  border-color: var(--panel-border-hover);
+  border-color: var(--accent-lavender);
   box-shadow: 
-    0 12px 32px rgba(184, 169, 201, 0.2),
+    0 16px 40px rgba(167, 139, 250, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
 }
 
 .panel-header {
@@ -123,7 +133,7 @@ body {
   z-index: 1;
 }
 
-/* Screentone Pattern Overlay */
+/* Screentone Pattern Overlay - Enhanced */
 .manga-panel::before {
   content: '';
   position: absolute;
@@ -133,18 +143,24 @@ body {
   height: 100%;
   background-image: 
     radial-gradient(circle, var(--text-secondary) 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  opacity: 0.03;
+  background-size: 20px 20px;
+  opacity: 0.04;
   pointer-events: none;
   z-index: 0;
+  transition: opacity var(--anim-medium) ease;
 }
 
-/* Hero Section - Two Column Layout */
+.manga-panel:hover::before {
+  opacity: 0.06;
+}
+
+/* Hero Section - Asymmetric Two Column Layout */
 .hero-panels {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: var(--panel-gap);
   margin-bottom: var(--space-lg);
+  align-items: start;
 }
 
 .panel-profile {
@@ -159,7 +175,7 @@ body {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding: var(--space-md);
+  padding: var(--space-lg);
 }
 
 /* Profile Card - RPG Character Card Style */
@@ -175,14 +191,9 @@ body {
   margin-bottom: var(--space-sm);
 }
 
-h1#site-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: var(--space-xs);
-  letter-spacing: 0.02em;
-}
+  h1#site-title {
+    font-size: 2.25rem;
+  }
 
 .jp-text {
   font-family: 'Noto Sans JP', sans-serif;
@@ -190,7 +201,10 @@ h1#site-title {
   font-weight: 400;
   color: var(--accent-lavender);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: scale(0.95);
+  transition: 
+    opacity var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: 0.2em;
   display: block;
   margin-top: var(--space-xs);
@@ -199,6 +213,7 @@ h1#site-title {
 .profile-name:hover .jp-text,
 .profile-name:focus-within .jp-text {
   opacity: 1;
+  transform: scale(1);
 }
 
 /* Character Stats */
@@ -255,7 +270,9 @@ h1#site-title {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: 
+    all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--anim-fast) cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   box-shadow: 
     2px 2px 0 rgba(0, 0, 0, 0.05),
@@ -267,15 +284,15 @@ h1#site-title {
   border-color: var(--accent-lavender);
   color: var(--page-bg);
   box-shadow: 
-    0 4px 12px rgba(184, 169, 201, 0.3),
+    0 4px 16px rgba(167, 139, 250, 0.35),
     inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .choice-btn:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
   box-shadow: 
-    0 1px 3px rgba(184, 169, 201, 0.2),
+    0 2px 8px rgba(167, 139, 250, 0.25),
     inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -309,7 +326,7 @@ h1#site-title {
   font-weight: 700;
   color: var(--text-primary);
   padding: 0.6rem 1.5rem;
-  background-color: var(--bg-primary);
+  background-color: var(--panel-bg);
   border: 2px solid var(--accent-lavender);
   border-radius: 25px;
   display: inline-block;
@@ -496,139 +513,6 @@ h1#site-title {
   justify-content: center;
 }
 
-.panel-main .panel-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-/* Name Block with Japanese Brackets */
-.name-block {
-  margin-bottom: var(--space-md);
-}
-
-h1#site-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: var(--space-xs);
-  letter-spacing: 0.02em;
-}
-
-.jp-text {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--accent-lavender);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  letter-spacing: 0.2em;
-  display: block;
-  margin-top: var(--space-xs);
-}
-
-.name-block:hover .jp-text,
-.name-block:focus-within .jp-text {
-  opacity: 1;
-}
-
-.tagline {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
-}
-
-/* Choice Buttons (Action Buttons) */
-.action-buttons {
-  display: flex;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.choice-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  background-color: transparent;
-  border: 2px solid var(--panel-border);
-  border-radius: 4px;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 
-    2px 2px 0 rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-}
-
-.choice-btn:hover {
-  background-color: var(--accent-lavender);
-  border-color: var(--accent-lavender);
-  color: var(--page-bg);
-  box-shadow: 
-    0 4px 12px rgba(184, 169, 201, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
-}
-
-.choice-btn:active {
-  transform: translateY(0);
-  box-shadow: 
-    0 1px 3px rgba(184, 169, 201, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-md);
-}
-
-.scroll-indicator .arrow {
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  animation: gentleBounce 2s ease-in-out infinite;
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.scroll-indicator:hover .arrow {
-  opacity: 1;
-  color: var(--accent-lavender);
-}
-
-@keyframes gentleBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-}
-
-/* Page Break */
-.page-break {
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--gutter-color) 20%,
-    var(--gutter-color) 80%,
-    transparent 100%
-  );
-  margin: var(--space-2xl) 0;
-}
-
 /* Projects Section - Manga Scene Cards */
 .project-scenes {
   display: flex;
@@ -641,16 +525,18 @@ h1#site-title {
   border: 2px solid var(--panel-border);
   border-radius: var(--panel-radius);
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: 
+    all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--anim-fast) cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
 .scene-card:hover {
-  border-color: var(--panel-border-hover);
+  border-color: var(--accent-lavender);
   box-shadow: 
-    0 12px 32px rgba(184, 169, 201, 0.2),
+    0 20px 48px rgba(167, 139, 250, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transform: scale(1.02) translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .scene-card::before {
@@ -727,23 +613,37 @@ h1#site-title {
   font-weight: 400;
   color: var(--accent-lavender);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: translateY(-4px) scale(0.98);
+  transition: 
+    opacity var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: 0.2em;
   display: block;
 }
 
 .scene-title-group:hover .jp-text {
   opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-/* Speech Bubble Style */
+/* Speech Bubble Style - Enhanced */
 .speech-bubble {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 2px solid var(--panel-border);
   border-radius: 20px;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
   position: relative;
+  transition: 
+    transform var(--anim-fast) cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow var(--anim-fast) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scene-card:hover .speech-bubble {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.1);
 }
 
 .speech-bubble::before {
@@ -817,7 +717,9 @@ h1#site-title {
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: 
+    all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--anim-fast) cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   box-shadow: 
     2px 2px 0 rgba(0, 0, 0, 0.05),
@@ -829,9 +731,9 @@ h1#site-title {
   border-color: var(--accent-lavender);
   color: var(--page-bg);
   box-shadow: 
-    0 4px 12px rgba(184, 169, 201, 0.3),
+    0 4px 16px rgba(167, 139, 250, 0.35),
     inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .action-btn.primary {
@@ -843,6 +745,9 @@ h1#site-title {
 .action-btn.primary:hover {
   background-color: var(--accent-lavender-dark);
   border-color: var(--accent-lavender-dark);
+  box-shadow: 
+    0 6px 20px rgba(167, 139, 250, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* Footer */
@@ -884,6 +789,7 @@ h1#site-title {
   
   .hero-panels {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
   
   .panel-profile {
@@ -937,6 +843,16 @@ h1#site-title {
     align-items: flex-start;
     gap: var(--space-xs);
   }
+  
+  .page-break::before,
+  .page-break::after {
+    width: 30px;
+  }
+  
+  .speech-bubble {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* Blog Code Blocks - Dark Theme */
@@ -974,6 +890,75 @@ h1#site-title {
 .code-function { color: #55efc4; }    /* green - function names */
 .code-number { color: #fdcb6e; }       /* yellow - numbers */
 
+/* Chapter Navigation - Manga Style */
+.chapter-nav {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin: var(--space-md) 0 0;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.chapter-nav::before,
+.chapter-nav::after {
+  content: '「';
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 2rem;
+  color: var(--accent-lavender);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: all var(--anim-medium) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapter-nav::before {
+  left: var(--space-lg);
+}
+
+.chapter-nav::after {
+  content: '」';
+  right: var(--space-lg);
+}
+
+.chapter-nav:hover {
+  color: var(--accent-lavender);
+  transform: translateY(-2px);
+}
+
+.chapter-nav:hover::before,
+.chapter-nav:hover::after {
+  opacity: 1;
+  color: var(--accent-lavender-dark);
+}
+
+.chapter-nav-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  transition: opacity var(--anim-medium) ease;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.chapter-nav:hover .chapter-nav-jp {
+  opacity: 1;
+}
+
+.chapter-nav-text {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -997,8 +982,16 @@ h1#site-title {
     border: 1px solid #ccc;
   }
   
-  .scroll-indicator,
+  .chapter-nav,
   .jp-text {
+    display: none;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .page-break {
     display: none;
   }
 }

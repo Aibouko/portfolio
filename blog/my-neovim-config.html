@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link href="../style.css" rel="stylesheet" />
@@ -134,10 +134,10 @@
   <body>
     <main class="manga-page">
       <section class="blog-section manga-chapter">
-        <div class="chapter-header">
+        <header class="chapter-header">
           <span class="chapter-number">BLOG</span>
           <span class="chapter-title">Development Notes</span>
-        </div>
+        </header>
 
         <div class="manga-panel blog-panel">
           <a href="../blog.html" class="back-link">← Back to Blog</a>
@@ -410,7 +410,7 @@ ls.filetype_extend(<span class="code-string">"typescript"</span>, { <span class=
                 <pre><code><span class="code-function">require</span>(<span class="code-string">"obsidian"</span>).setup({
 	ft = <span class="code-string">"markdown"</span>,
 	completion = { blink = <span class="code-keyword">true</span> },
-	workspaces = { { path = <span class="code-keyword">vim</span>.fn.expand(<span class="code-string">"~/Documents/Kaizen"</span>) } },
+	workspaces = { { path = <span class="code-keyword">vim</span>.fn.expand(<span class="code-string"></span>) } },
 	legacy_commands = <span class="code-keyword">false</span>,
 	note_id_func = <span class="code-keyword">function</span>(title)
 		<span class="code-keyword">if</span> title <span class="code-keyword">and</span> title ~= <span class="code-string">""</span> <span class="code-keyword">then</span>
@@ -567,8 +567,7 @@ map(<span class="code-string">"n"</span>, <span class="code-string">"&lt;leader&
 
               <p>
                 <strong>obsidian.nvim + render-markdown.nvim</strong> -
-                Note-taking in <code>~/Documents/Kaizen</code>. Daily notes,
-                backlinks, the whole system.
+                Note-taking. Daily notes, backlinks, the whole system.
               </p>
 
               <p>
