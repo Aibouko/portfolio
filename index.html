@@ -26,6 +26,25 @@
         </header>
 
         <div class="hero-panels">
+          <!-- Background Panel (About Me) -->
+          <div class="manga-panel panel-background">
+            <div class="panel-header">
+              <span class="panel-label">Background</span>
+              <span class="jp-text" aria-hidden="true">背景</span>
+            </div>
+            <div class="panel-content">
+              <!-- Avatar Placeholder -->
+              <div class="avatar-placeholder">
+                <div class="avatar-frame">
+                  <span class="avatar-label">[Your Avatar]</span>
+                  <span class="avatar-hint">Draw yourself here</span>
+                </div>
+              </div>
+              
+              <p class="background-text">I make small games and simple websites. I also watch Anime and Read Mangas.</p>
+            </div>
+          </div>
+
           <!-- Profile Panel -->
           <div class="manga-panel panel-profile">
             <div class="panel-header">
@@ -83,52 +102,55 @@
             </div>
           </div>
 
-          <!-- Skills Panel -->
+          <!-- Skills Panel - RPG Status Screen Style -->
           <div class="manga-panel panel-skills">
             <div class="panel-header">
-              <span class="panel-label">Skill Tree</span>
+              <span class="panel-label">【STATUS】</span>
+              <span class="jp-text" aria-hidden="true">ステータス</span>
             </div>
             <div class="panel-content">
-              <div class="skill-tree">
-                <div class="tree-center">
-                  <span class="center-node">Dev</span>
+              <div class="status-screen">
+                <div class="status-header">
+                  <span class="status-title">Skills</span>
+                  <span class="status-subtitle" aria-hidden="true">スキル</span>
                 </div>
-                <div class="tree-branches-horizontal">
-                  <div class="branch-left">
-                    <div class="branch-connector left-connector"></div>
-                    <div class="branch-node">
-                      <span class="branch-title">Game</span>
-                      <div class="skills-group">
-                        <span class="skill-badge">Godot</span>
-                        <span class="skill-badge">GDScript</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="branch-right">
-                    <div class="branch-connector right-connector"></div>
-                    <div class="branch-node">
-                      <span class="branch-title">Web</span>
-                      <div class="skills-group">
-                        <span class="skill-badge">HTML</span>
-                        <span class="skill-badge">CSS</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">TailwindCSS</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tree-branches-vertical">
-                  <div class="branch-down">
-                    <div class="branch-connector down-connector"></div>
-                    <div class="branch-node">
-                      <span class="branch-title">Tools</span>
-                      <div class="skills-group">
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">GitHub</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
+                <ul class="skill-list">
+                  <!-- Easy to add: just copy/paste a <li> -->
+                  <li class="skill-item">
+                    <span class="skill-number">[01]</span>
+                    <span class="skill-name">HTML5</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[02]</span>
+                    <span class="skill-name">CSS3</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[03]</span>
+                    <span class="skill-name">JavaScript</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[04]</span>
+                    <span class="skill-name">TailwindCSS</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[05]</span>
+                    <span class="skill-name">Godot Engine</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[06]</span>
+                    <span class="skill-name">GDScript</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[07]</span>
+                    <span class="skill-name">Git</span>
+                  </li>
+                  <li class="skill-item">
+                    <span class="skill-number">[08]</span>
+                    <span class="skill-name">GitHub</span>
+                  </li>
+                  <!-- Add more skills here easily! -->
+                </ul>
               </div>
             </div>
           </div>
@@ -165,7 +187,6 @@
             <div class="scene-content">
               <div class="scene-title-group">
                 <h3>Project Title</h3>
-                <span class="jp-text" aria-hidden="true">Japanese Title</span>
               </div>
               
               <div class="speech-bubble">
