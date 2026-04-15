@@ -46,7 +46,7 @@ html {
 
 body {
   font-family:
-    "M PLUS Rounded 1c",
+    Inter,
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
@@ -60,15 +60,16 @@ body {
 
 /* Manga Page Container */
 .manga-page {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
   position: relative;
+  min-height: 80vh;
 }
 
 /* Chapter Styling */
 .manga-chapter {
-  margin-bottom: var(--space-xl);
+  min-height: 80vh;
 }
 
 /* Hero Section */
@@ -81,7 +82,6 @@ body {
   grid-template-columns: 1.5fr 2fr 1.5fr;
   gap: var(--panel-gap);
   margin-bottom: var(--space-lg);
-  align-items: stretch;
 }
 
 .chapter-header {
@@ -119,6 +119,70 @@ body {
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Scroll reveal animation - hidden state */
+.manga-panel.reveal-hidden,
+.scene-card.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Scroll reveal animation - visible state */
+.manga-panel.reveal-visible,
+.scene-card.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Staggered delay - each panel appears slightly later */
+.manga-panel:nth-child(1).reveal-hidden,
+.scene-card:nth-child(1).reveal-hidden {
+  transition-delay: 0s;
+}
+
+.manga-panel:nth-child(2).reveal-hidden,
+.scene-card:nth-child(2).reveal-hidden {
+  transition-delay: 0.1s;
+}
+
+.manga-panel:nth-child(3).reveal-hidden,
+.scene-card:nth-child(3).reveal-hidden {
+  transition-delay: 0.2s;
+}
+
+.manga-panel:nth-child(4).reveal-hidden,
+.scene-card:nth-child(4).reveal-hidden {
+  transition-delay: 0.3s;
+}
+
+.manga-panel:nth-child(5).reveal-hidden,
+.scene-card:nth-child(5).reveal-hidden {
+  transition-delay: 0.4s;
+}
+
+.manga-panel:nth-child(6).reveal-hidden,
+.scene-card:nth-child(6).reveal-hidden {
+  transition-delay: 0.5s;
+}
+
+/* Disable animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .manga-panel.reveal-hidden,
+  .scene-card.reveal-hidden,
+  .manga-panel.reveal-visible,
+  .scene-card.reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .jp-text {
+    opacity: 1;
+  }
 }
 
 .manga-panel:hover {
